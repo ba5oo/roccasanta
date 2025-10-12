@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trullo Rocca Santa - Ostuni</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Helvetica Neue", sans-serif;
+        background-color: #fffdf8;
+        color: #333;
+      }
+
+      header {
+        background-image: url("https://via.placeholder.com/1200x800?text=Trullo+Rocca+Santa");
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
+
+      section {
+        padding: 20px;
+        max-width: 800px;
+        margin: auto;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+      }
+
+      .gallery img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .button {
+        display: block;
+        width: fit-content;
+        margin: 30px auto;
+        padding: 12px 24px;
+        background-color: #007b83;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 0.9rem;
+        color: #777;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Trullo Rocca Santa</h1>
+    </header>
+
+    <section>
+      <h2>Benvenuti nel cuore della Puglia</h2>
+      <p>
+        Immerso tra gli ulivi secolari e la pietra bianca di Ostuni, Trullo
+        Rocca Santa è un rifugio autentico dove tradizione e tranquillità si
+        incontrano. Il trullo offre ambienti accoglienti, una cucina tipica e
+        spazi all’aperto ideali per godersi il sole e le serate estive.
+      </p>
+    </section>
+
+    <section>
+      <h2>Galleria</h2>
+      <div class="gallery">
+        <img
+          src="https://via.placeholder.com/400x300?text=Esterno+del+Trullo"
+          alt="Esterno del Trullo"
+        />
+        <img
+          src="https://via.placeholder.com/400x300?text=Interno+in+pietra"
+          alt="Interno del Trullo"
+        />
+        <img
+          src="https://via.placeholder.com/400x300?text=Ulivi+e+piscina"
+          alt="Ulivi e piscina"
+        />
+      </div>
+    </section>
+
+    <section>
+      <h2>Prenota il tuo soggiorno</h2>
+      <a class="button" href="https://airbnb.com/h/roccasanta" target="_blank">
+        Prenota su Airbnb
+      </a>
+    </section>
+
+    <footer>
+      © 2025 Trullo Rocca Santa · Ostuni, Puglia · Contatti: info@roccasanta.it
+    </footer>
+  </body>
+</html>
