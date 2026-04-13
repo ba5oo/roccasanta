@@ -1,116 +1,784 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trullo Rocca Santa - Ostuni</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: "Helvetica Neue", sans-serif;
-        background-color: #fffdf8;
-        color: #333;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trullo Rocca Santa – Ostuni, Puglia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #faf7f0;
+      --stone: #e8e0d0;
+      --terracotta: #c0714a;
+      --terracotta-dark: #a05a38;
+      --olive: #6b7c4e;
+      --deep: #2a2118;
+      --text: #3d3228;
+      --muted: #8a7d6e;
+      --white: #fff;
+    }
 
-      header {
-        background-image: url("https://via.placeholder.com/1200x800?text=Trullo+Rocca+Santa");
-        background-size: cover;
-        background-position: center;
-        height: 80vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
-      }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      header h1 {
-        font-size: 2.5rem;
-        background-color: rgba(0, 0, 0, 0.4);
-        padding: 10px 20px;
-        border-radius: 10px;
-      }
+    html { scroll-behavior: smooth; }
 
-      section {
-        padding: 20px;
-        max-width: 800px;
-        margin: auto;
-      }
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.7;
+    }
 
-      .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 10px;
-      }
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 48px;
+      background: rgba(42, 33, 24, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--cream);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
 
-      .gallery img {
-        width: 100%;
-        border-radius: 8px;
-      }
+    /* ─── HERO ─── */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(42,33,24,0.3) 0%, rgba(42,33,24,0.55) 100%),
+                  url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 0 24px;
+    }
+    .hero-badge {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+    .hero h1 em { font-style: italic; color: #f0d9c8; }
+    .hero-sub {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.06em;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+    .hero-cta {
+      margin-top: 44px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp 1s 0.35s ease both;
+    }
+    .btn-primary {
+      background: var(--terracotta);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: 400;
+      transition: background 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.12); }
 
-      .button {
-        display: block;
-        width: fit-content;
-        margin: 30px auto;
-        padding: 12px 24px;
-        background-color: #007b83;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-        text-align: center;
-      }
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: fadeUp 1.2s 0.6s ease both;
+    }
+    .scroll-hint::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.3);
+      animation: pulse 2s infinite;
+    }
 
-      footer {
-        text-align: center;
-        padding: 20px;
-        font-size: 0.9rem;
-        color: #777;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Trullo Rocca Santa</h1>
-    </header>
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
 
-    <section>
-      <h2>Benvenuti nel cuore della Puglia</h2>
-      <p>
-        Immerso tra gli ulivi secolari e la pietra bianca di Ostuni, Trullo
-        Rocca Santa è un rifugio autentico dove tradizione e tranquillità si
-        incontrano. Il trullo offre ambienti accoglienti, una cucina tipica e
-        spazi all’aperto ideali per godersi il sole e le serate estive.
+    /* ─── SECTIONS ─── */
+    .section { padding: 100px 24px; max-width: 1100px; margin: 0 auto; }
+
+    .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--deep);
+      margin-bottom: 28px;
+    }
+    .section-title em { font-style: italic; }
+
+    .section-body {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    /* ─── ABOUT LAYOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-image {
+      position: relative;
+    }
+    .about-image img {
+      width: 100%;
+      border-radius: 2px;
+      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+    }
+    .about-image-accent {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      width: 55%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+      border: 6px solid var(--cream);
+    }
+    .features {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .feature {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .feature-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .feature-label {
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .feature-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--stone);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: auto;
+      gap: 12px;
+      margin-top: 48px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+      transition: transform 0.4s ease, filter 0.4s ease;
+      filter: brightness(0.97);
+    }
+    .gallery-grid img:hover { transform: scale(1.02); filter: brightness(1); }
+    .g1 { grid-column: 1 / 8; aspect-ratio: 4/3; overflow: hidden; }
+    .g2 { grid-column: 8 / 13; aspect-ratio: 4/3; overflow: hidden; }
+    .g3 { grid-column: 1 / 5; aspect-ratio: 4/3; overflow: hidden; }
+    .g4 { grid-column: 5 / 9; aspect-ratio: 4/3; overflow: hidden; }
+    .g5 { grid-column: 9 / 13; aspect-ratio: 4/3; overflow: hidden; }
+
+    /* ─── BOOKING SECTION ─── */
+    #prenota {
+      background: var(--deep);
+      color: var(--cream);
+      padding: 100px 24px;
+    }
+    #prenota .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    #prenota .label { color: var(--terracotta); }
+    #prenota .section-title { color: var(--cream); }
+    #prenota .section-body { color: rgba(255,255,255,0.55); }
+
+    .booking-info {
+      margin-top: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 16px;
+      font-size: 0.9rem;
+    }
+    .info-row span:first-child { color: rgba(255,255,255,0.45); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .info-row span:last-child { font-weight: 400; color: var(--cream); }
+
+    /* ─── FORM ─── */
+    .booking-form {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 40px;
+    }
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 28px;
+      color: var(--cream);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    input, textarea, select {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 3px;
+      padding: 10px 14px;
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--terracotta);
+    }
+    textarea { resize: vertical; min-height: 90px; }
+    select option { background: var(--deep); color: var(--cream); }
+
+    .paypal-note {
+      margin: 20px 0 24px;
+      background: rgba(255,196,57,0.1);
+      border: 1px solid rgba(255,196,57,0.25);
+      border-radius: 3px;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.6;
+    }
+    .paypal-note strong { color: #f0c040; }
+
+    .btn-submit {
+      width: 100%;
+      padding: 15px;
+      background: var(--terracotta);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-submit:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+
+    .form-disclaimer {
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ─── SUCCESS MESSAGE ─── */
+    #success-msg {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    #success-msg .checkmark { font-size: 3rem; margin-bottom: 16px; }
+    #success-msg p { color: rgba(255,255,255,0.65); font-size: 0.95rem; }
+
+    /* ─── MAP / LOCATION ─── */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .location-map {
+      border-radius: 4px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      border: 1px solid var(--stone);
+    }
+    .location-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .nearby-list {
+      margin-top: 28px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .nearby-list li {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .nearby-list li::before {
+      content: '→';
+      color: var(--terracotta);
+      font-size: 0.9rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--deep);
+      color: rgba(255,255,255,0.35);
+      padding: 48px 24px;
+      text-align: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      line-height: 2;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .about-grid, .location-grid, #prenota .inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-image-accent { display: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .g1, .g2, .g3, .g4, .g5 { grid-column: auto; }
+      .form-row { grid-template-columns: 1fr; }
+      .booking-form { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Trullo Rocca Santa</a>
+  <div class="nav-links">
+    <a href="#storia">Il Trullo</a>
+    <a href="#galleria">Galleria</a>
+    <a href="#dove">Posizione</a>
+    <a href="#prenota">Prenota</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="position:relative;">
+  <div class="hero-badge">Ostuni · Valle d'Itria · Puglia</div>
+  <h1>Trullo<br/><em>Rocca Santa</em></h1>
+  <p class="hero-sub">Un rifugio autentico tra gli ulivi della Puglia</p>
+  <div class="hero-cta">
+    <a href="#prenota" class="btn-primary">Richiedi prenotazione</a>
+    <a href="#storia" class="btn-ghost">Scopri il trullo</a>
+  </div>
+  <div class="scroll-hint">Scorri</div>
+</section>
+
+<!-- ABOUT -->
+<section id="storia" class="section">
+  <div class="about-grid">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=800&q=80" alt="Trullo esterno" />
+      <img class="about-image-accent" src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80" alt="Dettaglio in pietra" />
+    </div>
+    <div>
+      <p class="label">Il nostro trullo</p>
+      <h2 class="section-title">Pietra bianca,<br/><em>silenzio e ulivi</em></h2>
+      <p class="section-body">
+        Immerso tra gli ulivi secolari di Ostuni, Trullo Rocca Santa è una dimora autentica costruita in pietra calcarea locale. Un luogo dove la tradizione pugliese si respira in ogni angolo — dalle volte a cono del trullo alla cucina attrezzata, fino al giardino dove il sole di Puglia scalda le serate estive.
       </p>
-    </section>
-
-    <section>
-      <h2>Galleria</h2>
-      <div class="gallery">
-        <img
-          src="https://via.placeholder.com/400x300?text=Esterno+del+Trullo"
-          alt="Esterno del Trullo"
-        />
-        <img
-          src="https://via.placeholder.com/400x300?text=Interno+in+pietra"
-          alt="Interno del Trullo"
-        />
-        <img
-          src="https://via.placeholder.com/400x300?text=Ulivi+e+piscina"
-          alt="Ulivi e piscina"
-        />
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">🛏️</div>
+          <div>
+            <div class="feature-label">2 camere</div>
+            <div class="feature-sub">fino a 4 ospiti</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🌿</div>
+          <div>
+            <div class="feature-label">Giardino privato</div>
+            <div class="feature-sub">con ulivi e area relax</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🏺</div>
+          <div>
+            <div class="feature-label">Pietra originale</div>
+            <div class="feature-sub">architettura storica</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🚗</div>
+          <div>
+            <div class="feature-label">15 min dal mare</div>
+            <div class="feature-sub">Torre Guaceto, Villanova</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📶</div>
+          <div>
+            <div class="feature-label">WiFi incluso</div>
+            <div class="feature-sub">connessione stabile</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">❄️</div>
+          <div>
+            <div class="feature-label">Aria condizionata</div>
+            <div class="feature-sub">riscaldamento incluso</div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section>
-      <h2>Prenota il tuo soggiorno</h2>
-      <a class="button" href="https://airbnb.com/h/roccasanta" target="_blank">
-        Prenota su Airbnb
-      </a>
-    </section>
+<div class="divider"></div>
 
-    <footer>
-      © 2025 Trullo Rocca Santa · Ostuni, Puglia · Contatti: info@roccasanta.it
-    </footer>
-  </body>
+<!-- GALLERY -->
+<section id="galleria" class="section">
+  <p class="label">Galleria fotografica</p>
+  <h2 class="section-title"><em>Immagini</em> del trullo</h2>
+  <div class="gallery-grid">
+    <div class="g1"><img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=900&q=80" alt="Esterno del trullo" /></div>
+    <div class="g2"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Giardino" /></div>
+    <div class="g3"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Ulivi" /></div>
+    <div class="g4"><img src="https://images.unsplash.com/photo-1505577858722-7b9f1a89f1e2?w=600&q=80" alt="Interno" /></div>
+    <div class="g5"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Cucina" /></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LOCATION -->
+<section id="dove" class="section">
+  <div class="location-grid">
+    <div>
+      <p class="label">Come raggiungerci</p>
+      <h2 class="section-title">Nel cuore<br/><em>della Puglia</em></h2>
+      <p class="section-body">A pochi minuti da Ostuni — la Città Bianca — e dalla costa adriatica. Facilmente raggiungibile da Brindisi e Bari.</p>
+      <ul class="nearby-list">
+        <li>Ostuni centro storico — 10 minuti</li>
+        <li>Aeroporto di Brindisi — 30 minuti</li>
+        <li>Spiagge di Torre Guaceto — 20 minuti</li>
+        <li>Alberobello — 40 minuti</li>
+        <li>Aeroporto di Bari — 1 ora</li>
+      </ul>
+    </div>
+    <div class="location-map">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=17.45,40.70,17.55,40.76&layer=mapnik&marker=40.7319,17.5078"
+        allowfullscreen
+        loading="lazy"
+        title="Posizione Trullo Rocca Santa"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="prenota">
+  <div class="inner">
+    <div>
+      <p class="label">Prenotazione diretta</p>
+      <h2 class="section-title">Pianifica il tuo<br/><em>soggiorno</em></h2>
+      <p class="section-body">
+        Compila il modulo per richiedere la disponibilità. Risponderemo entro 24 ore per confermare le date e inviarti i dettagli per il pagamento tramite PayPal.
+      </p>
+
+      <div class="booking-info">
+        <div class="info-row">
+          <span>Check-in</span>
+          <span>dalle 16:00</span>
+        </div>
+        <div class="info-row">
+          <span>Check-out</span>
+          <span>entro le 10:00</span>
+        </div>
+        <div class="info-row">
+          <span>Soggiorno minimo</span>
+          <span>3 notti</span>
+        </div>
+        <div class="info-row">
+          <span>Pagamento</span>
+          <span>PayPal · Bonifico</span>
+        </div>
+        <div class="info-row">
+          <span>Caparra</span>
+          <span>30% alla prenotazione</span>
+        </div>
+        <div class="info-row">
+          <span>Contatto diretto</span>
+          <span><a href="mailto:info@roccasanta.it" style="color:var(--terracotta);text-decoration:none;">info@roccasanta.it</a></span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="booking-form" id="booking-form-wrap">
+        <div class="form-title">Richiesta di disponibilità</div>
+
+        <form id="booking-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Mario" required />
+            </div>
+            <div class="form-group">
+              <label for="cognome">Cognome</label>
+              <input type="text" id="cognome" name="cognome" placeholder="Rossi" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="mario@email.com" required />
+            </div>
+            <div class="form-group">
+              <label for="telefono">Telefono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+39 333 000 0000" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkin">Arrivo</label>
+              <input type="date" id="checkin" name="checkin" required />
+            </div>
+            <div class="form-group">
+              <label for="checkout">Partenza</label>
+              <input type="date" id="checkout" name="checkout" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ospiti">Ospiti</label>
+              <select id="ospiti" name="ospiti">
+                <option value="1">1 ospite</option>
+                <option value="2" selected>2 ospiti</option>
+                <option value="3">3 ospiti</option>
+                <option value="4">4 ospiti</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pagamento">Pagamento preferito</label>
+              <select id="pagamento" name="pagamento">
+                <option value="paypal">PayPal</option>
+                <option value="bonifico">Bonifico bancario</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="messaggio">Messaggio (facoltativo)</label>
+              <textarea id="messaggio" name="messaggio" placeholder="Informazioni aggiuntive, richieste speciali…"></textarea>
+            </div>
+          </div>
+
+          <div class="paypal-note">
+            <strong>💳 Pagamento tramite PayPal:</strong> Dopo la conferma della disponibilità, riceverai un link PayPal per versare la caparra del 30%. Il saldo si salda all'arrivo o prima del check-in.
+          </div>
+
+          <button type="submit" class="btn-submit">Invia richiesta</button>
+          <p class="form-disclaimer">Risponderemo entro 24 ore · Nessun addebito automatico</p>
+        </form>
+
+        <div id="success-msg">
+          <div class="checkmark">✉️</div>
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:12px;color:var(--cream);">Richiesta inviata!</h3>
+          <p>Ti risponderemo entro 24 ore all'indirizzo email indicato per confermare la disponibilità e inviarti i dettagli per il pagamento.</p>
+          <p style="margin-top:12px;font-size:0.8rem;color:rgba(255,255,255,0.3);">Nel frattempo puoi scriverci a <a href="mailto:info@roccasanta.it" style="color:var(--terracotta);">info@roccasanta.it</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Trullo Rocca Santa</span>
+  Ostuni, Puglia, Italia<br/>
+  <a href="mailto:info@roccasanta.it">info@roccasanta.it</a><br/><br/>
+  © 2025 Trullo Rocca Santa · Tutti i diritti riservati
+</footer>
+
+<script>
+  // Date minimums
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkin').min = today;
+  document.getElementById('checkout').min = today;
+
+  document.getElementById('checkin').addEventListener('change', function() {
+    const checkin = new Date(this.value);
+    checkin.setDate(checkin.getDate() + 3);
+    document.getElementById('checkout').min = checkin.toISOString().split('T')[0];
+  });
+
+  // Form submit — per ora invia una mailto, poi puoi collegare Formspree
+  function handleSubmit(e) {
+    e.preventDefault();
+    const f = e.target;
+
+    const subject = encodeURIComponent(`Richiesta prenotazione ${f.checkin.value} - ${f.checkout.value}`);
+    const body = encodeURIComponent(
+      `Nome: ${f.nome.value} ${f.cognome.value}\n` +
+      `Email: ${f.email.value}\n` +
+      `Telefono: ${f.telefono.value}\n` +
+      `Arrivo: ${f.checkin.value}\n` +
+      `Partenza: ${f.checkout.value}\n` +
+      `Ospiti: ${f.ospiti.value}\n` +
+      `Pagamento: ${f.pagamento.value}\n\n` +
+      `Messaggio:\n${f.messaggio.value}`
+    );
+
+    window.location.href = `mailto:info@roccasanta.it?subject=${subject}&body=${body}`;
+
+    // Mostra conferma
+    document.getElementById('booking-form').style.display = 'none';
+    document.getElementById('success-msg').style.display = 'block';
+  }
+</script>
+
+</body>
 </html>
