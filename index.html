@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trullo Rocca Santa — Ostuni, Puglia</title>
+  <title>trullo rocca santa — Ostuni, Puglia</title>
   <meta name="description" content="Autentico trullo pugliese restaurato nella campagna di Ostuni. Prenota direttamente per il miglior prezzo." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -176,27 +176,6 @@
       max-width: 48ch;
       margin-bottom: 2rem;
     }
-    .hero-chips {
-      display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .hero-chip {
-      font-size: 0.78rem;
-      font-weight: 300;
-      color: rgba(255,255,255,0.75);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .hero-chip::before {
-      content: '';
-      display: inline-block;
-      width: 4px; height: 4px;
-      background: var(--terra-lt);
-      border-radius: 50%;
-    }
     .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-hero-primary {
       font-size: 0.75rem;
@@ -300,9 +279,12 @@
     }
     .info-item:last-child { border-right: none; }
     .info-icon {
-      font-size: 1.4rem;
+      width: 24px;
+      height: 24px;
       flex-shrink: 0;
+      color: var(--terra);
     }
+    .info-icon svg { width: 100%; height: 100%; }
     .info-label {
       font-size: 0.62rem;
       font-weight: 400;
@@ -340,9 +322,7 @@
     }
     .features-header {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: end;
+      grid-template-columns: 1fr;
       padding-bottom: 3.5rem;
       margin-bottom: 3.5rem;
       border-bottom: 1px solid var(--bone);
@@ -370,7 +350,13 @@
     }
     .feat-card:nth-child(3n) { border-right: none; }
     .feat-card:nth-child(n+4) { /* no extra border needed */ }
-    .feat-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+    .feat-icon {
+      width: 22px; height: 22px;
+      color: var(--terra);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .feat-icon svg { width: 100%; height: 100%; }
     .feat-card h3 {
       font-family: var(--serif);
       font-size: 1.15rem;
@@ -758,11 +744,11 @@
 <!-- ═══════════ NAV ═══════════ -->
 <nav id="nav">
   <div class="nav-left">
-    <a href="#trullo"  class="nav-link">Il Trullo</a>
+    <a href="#trullo"  class="nav-link">Il trullo</a>
     <a href="#gallery" class="nav-link">Galleria</a>
     <a href="#map"     class="nav-link">Dove Siamo</a>
   </div>
-  <a href="#" class="nav-logo">Trullo Rocca Santa</a>
+  <a href="#" class="nav-logo">trullo rocca santa</a>
   <div class="nav-right">
     <a href="mailto:info@roccasanta.it" class="nav-link">Contatti</a>
     <a href="#booking" class="nav-cta">Prenota</a>
@@ -775,13 +761,8 @@
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <span class="hero-location">Ostuni &nbsp;·&nbsp; Puglia &nbsp;·&nbsp; Italia</span>
-    <h1 class="hero-title">Benvenuti al<br><em>Trullo Rocca Santa</em></h1>
+    <h1 class="hero-title">trullo<br><em>rocca santa</em></h1>
     <p class="hero-sub">Il nostro trullo nella campagna di Ostuni, a pochi minuti dal mare e dalla città bianca. Vi accogliamo con semplicità, con il piacere di condividere con voi la nostra Puglia.</p>
-    <div class="hero-chips">
-      <span class="hero-chip">2 camere + divano letto</span>
-      <span class="hero-chip">Fino a 6 ospiti</span>
-      <span class="hero-chip">Uso esclusivo</span>
-    </div>
     <div class="hero-btns">
       <a href="#booking" class="btn-hero-primary">Richiedi disponibilità</a>
       <a href="#trullo"  class="btn-hero-ghost">Scopri il trullo</a>
@@ -792,45 +773,53 @@
 <!-- ═══════════ INTRO ═══════════ -->
 <section id="trullo">
   <div class="intro-text">
-    <span class="eyebrow">Il Trullo</span>
+    <span class="eyebrow">Il trullo</span>
     <h2>Un trullo di famiglia,<br>nella campagna di Ostuni</h2>
-    <p>Rocca Santa è il trullo di famiglia, nella campagna di Ostuni. Lo abbiamo restaurato rispettando quello che era: pietra, volte a cono, materiali locali. Niente di forzato.</p>
-    <p>Se cercate un posto tranquillo dove svegliarvi con il silenzio e avere tutto il necessario per stare bene, potrebbe fare al caso vostro.</p>
+    <p>rocca santa è il trullo di famiglia, nella campagna di Ostuni. Lo abbiamo restaurato rispettando quello che era: pietra, volte a cono, materiali locali.</p>
+    <p>Un posto dove stare bene, lontano dal rumore.</p>
     <a href="#gallery" class="btn-outline-terra">Vedi le foto</a>
   </div>
   <div class="intro-photo">
-    <img src="photos/out1.jpg" alt="Esterno del Trullo Rocca Santa" loading="lazy" />
+    <img src="photos/out1.jpg" alt="Esterno del trullo rocca santa" loading="lazy" />
   </div>
 </section>
 
 <!-- ═══════════ INFO STRIP ═══════════ -->
 <div class="info-strip">
   <div class="info-item">
-    <div class="info-icon">🛏</div>
+    <div class="info-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 19V10a2 2 0 012-2h16a2 2 0 012 2v9"/><path d="M2 15h20"/><rect x="7" y="8" width="5" height="7" rx="1"/></svg>
+    </div>
     <div>
       <div class="info-label">Camere</div>
       <div class="info-value">2 camere + divano letto</div>
     </div>
   </div>
   <div class="info-item">
-    <div class="info-icon">👥</div>
+    <div class="info-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3 21v-2a5 5 0 015-5h4a5 5 0 015 5v2"/><circle cx="17.5" cy="7.5" r="2"/><path d="M21 21v-1.5a3.5 3.5 0 00-2.5-3.36"/></svg>
+    </div>
     <div>
       <div class="info-label">Ospiti</div>
       <div class="info-value">Fino a 6 persone</div>
     </div>
   </div>
   <div class="info-item">
-    <div class="info-icon">🚿</div>
+    <div class="info-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M4 12a8 8 0 018-8"/><line x1="8" y1="17" x2="8" y2="17.01"/><line x1="12" y1="17" x2="12" y2="17.01"/><line x1="16" y1="17" x2="16" y2="17.01"/><line x1="8" y1="20" x2="8" y2="20.01"/><line x1="12" y1="20" x2="12" y2="20.01"/><line x1="16" y1="20" x2="16" y2="20.01"/></svg>
+    </div>
     <div>
       <div class="info-label">Bagni</div>
       <div class="info-value">2 (1 interno, 1 esterno)</div>
     </div>
   </div>
   <div class="info-item">
-    <div class="info-icon">📍</div>
+    <div class="info-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    </div>
     <div>
       <div class="info-label">Posizione</div>
-      <div class="info-value">Ostuni, 5 min dal mare</div>
+      <div class="info-value">Campagna di Ostuni</div>
     </div>
   </div>
 </div>
@@ -858,36 +847,35 @@
 <section id="features">
   <div class="features-header">
     <h2>Il trullo<br>e i suoi spazi</h2>
-    <p>Vi descriviamo con onestà quello che offre Rocca Santa, senza aggiungere né togliere nulla. Quello che vedete è quello che troverete.</p>
   </div>
   <div class="features-grid">
     <div class="feat-card">
-      <span class="feat-icon">🏠</span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
       <h3>Il trullo in pietra</h3>
       <p>Costruzione tradizionale pugliese con volte a cono originali, muri in pietra calcarea a secco e interni curati nel rispetto dei materiali locali.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">🌿</span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 017 7c0 4-4 8-7 11-3-3-7-7-7-11a7 7 0 017-7z"/><path d="M9 10c0-1.66 1.34-3 3-3"/></svg></span>
       <h3>Giardino e patio</h3>
       <p>Spazio esterno privato tra gli ulivi, con area pranzo all'aperto. Il posto giusto per mangiare all'ombra o guardare il tramonto sulla campagna.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">🍳</span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></span>
       <h3>Cucina attrezzata</h3>
       <p>Cucina completa per chi vuole cucinare — anche solo riscaldare la burrata comprata al mercato di Ostuni. Frigorifero, piano cottura, tutto il necessario.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">📶</span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></span>
       <h3>Wi-Fi e comfort</h3>
       <p>Connessione Wi-Fi, aria condizionata, biancheria inclusa. Non manca niente di essenziale per stare comodi.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">🚗</span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
       <h3>Parcheggio privato</h3>
       <p>Posto auto privato all'interno della proprietà. Utile, perché per esplorare la zona una macchina è quasi indispensabile.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon">📍</span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
       <h3>Posizione comoda</h3>
       <p>A 10 minuti da Ostuni, 30 dall'aeroporto di Brindisi, 5 minuti dalle prime spiagge. Da qui si raggiunge facilmente tutto il meglio della Puglia.</p>
     </div>
@@ -907,7 +895,7 @@
 <section id="slider-section">
   <div class="slider-head">
     <div class="rule"></div>
-    <h2>Intorno al Trullo</h2>
+    <h2>Intorno al trullo</h2>
   </div>
   <div class="slider-wrap">
     <div class="slider-track" id="sliderTrack">
@@ -939,8 +927,8 @@
     <div class="also-on">
       <span class="also-label">Disponibile anche su</span>
       <div class="plat-links">
-        <a href="https://www.airbnb.com"  target="_blank" rel="noopener" class="plat">Airbnb</a>
-        <a href="https://www.booking.com" target="_blank" rel="noopener" class="plat">Booking.com</a>
+        <a href="https://airbnb.it/h/roccasanta"  target="_blank" rel="noopener" class="plat">Airbnb</a>
+        <a href="https://www.booking.com/hotel/it/trullo-rocca-santa.it.html" target="_blank" rel="noopener" class="plat">Booking.com</a>
       </div>
     </div>
   </div>
@@ -1014,12 +1002,12 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <span class="footer-name">Trullo Rocca Santa</span>
+      <span class="footer-name">trullo rocca santa</span>
       <p>Un trullo storico restaurato nelle campagne di Ostuni. Tradizione, bellezza e silenzio.</p>
     </div>
     <div class="footer-col">
       <span class="footer-col-title">Esplora</span>
-      <a href="#trullo">Il Trullo</a>
+      <a href="#trullo">Il trullo</a>
       <a href="#gallery">Galleria</a>
       <a href="#features">Dotazioni</a>
       <a href="#map">Dove Siamo</a>
@@ -1028,12 +1016,12 @@
     <div class="footer-col">
       <span class="footer-col-title">Contatti</span>
       <a href="mailto:info@roccasanta.it">info@roccasanta.it</a>
-      <a href="https://www.airbnb.com"  target="_blank" rel="noopener">Airbnb</a>
-      <a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com</a>
+      <a href="https://airbnb.it/h/roccasanta"  target="_blank" rel="noopener">Airbnb</a>
+      <a href="https://www.booking.com/hotel/it/trullo-rocca-santa.it.html" target="_blank" rel="noopener">Booking.com</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Trullo Rocca Santa — Ostuni, Puglia</span>
+    <span>© 2025 trullo rocca santa — Ostuni, Puglia</span>
     <span>P.IVA / CF: [da aggiungere]</span>
   </div>
 </footer>
