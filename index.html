@@ -4,487 +4,1038 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trullo Rocca Santa — Ostuni, Puglia</title>
+  <meta name="description" content="Autentico trullo pugliese restaurato nelle campagne di Ostuni. Prenota direttamente per il miglior prezzo garantito." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --green:      #3d5a47;
-      --green-lt:   #5a7a63;
-      --sky:        #7aafc4;
-      --sky-lt:     #c2dce8;
-      --tortora:    #c8bfb0;
-      --tortora-lt: #f0ece5;
-      --white:      #fdfcfa;
-      --text:       #2c2c2c;
-      --text-lt:    #5a5650;
-      --serif:      'Lora', Georgia, serif;
-      --sans:       'Source Sans 3', sans-serif;
+      --black:      #100f0d;
+      --white:      #faf8f5;
+      --bone:       #ede8e0;
+      --stone:      #bdb5aa;
+      --terra:      #a0522a;
+      --terra-dk:   #7d3f1e;
+      --terra-lt:   #c97848;
+      --text:       #28231e;
+      --text-lt:    #6e6560;
+      --serif:      'DM Serif Display', Georgia, serif;
+      --sans:       'DM Sans', sans-serif;
     }
+
     html { scroll-behavior: smooth; }
+
     body {
       background: var(--white);
       color: var(--text);
       font-family: var(--sans);
-      font-weight: 400;
+      font-weight: 300;
       line-height: 1.65;
       overflow-x: hidden;
     }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.2rem 2.5rem;
-      transition: background 0.35s, padding 0.35s, box-shadow 0.35s;
+    /* ───────────────────────────────────────
+       NAV
+    ─────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1.8rem 3.5rem;
+      transition: background 0.45s, padding 0.45s, border-color 0.45s;
+      border-bottom: 1px solid transparent;
     }
-    nav.scrolled {
-      background: rgba(253,252,250,0.97);
-      padding: 0.8rem 2.5rem;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.08);
+    #nav.scrolled {
+      background: rgba(250,248,245,0.97);
+      padding: 1rem 3.5rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom-color: var(--bone);
     }
-    .nav-logo {
-      font-family: var(--serif); font-size: 1.15rem;
-      color: var(--white); text-decoration: none; font-weight: 400;
-    }
-    nav.scrolled .nav-logo { color: var(--green); }
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a {
-      font-size: 0.88rem; text-decoration: none;
-      color: rgba(255,255,255,0.9); transition: opacity 0.2s;
-    }
-    nav.scrolled .nav-links a { color: var(--text); }
-    .nav-links a:hover { opacity: 0.65; }
-    .nav-cta {
-      background: var(--green) !important; color: var(--white) !important;
-      padding: 0.45rem 1.2rem; border-radius: 2px; font-weight: 600;
-    }
-    nav.scrolled .nav-cta { background: var(--green) !important; color: var(--white) !important; }
+    .nav-left  { display: flex; gap: 2.8rem; align-items: center; }
+    .nav-right { display: flex; gap: 1.8rem; align-items: center; justify-content: flex-end; }
 
-    /* HERO */
-    .hero {
-      position: relative; height: 100vh; min-height: 580px;
-      display: flex; align-items: center; overflow: hidden;
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: rgba(255,255,255,0.95);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.3s;
+    }
+    #nav.scrolled .nav-logo { color: var(--black); }
+
+    .nav-link {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.82);
+      transition: color 0.2s;
+    }
+    #nav.scrolled .nav-link { color: var(--text-lt); }
+    .nav-link:hover { color: var(--terra-lt) !important; }
+
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.9);
+      border: 1px solid rgba(255,255,255,0.5);
+      padding: 0.5rem 1.2rem;
+      transition: all 0.25s;
+    }
+    #nav.scrolled .nav-cta {
+      color: var(--terra);
+      border-color: var(--terra);
+    }
+    .nav-cta:hover {
+      background: var(--terra) !important;
+      border-color: var(--terra) !important;
+      color: var(--white) !important;
+    }
+
+    /* ───────────────────────────────────────
+       HERO
+    ─────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 620px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .hero-bg {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: -6%;
       background: url('photos/vista1.jpg') center/cover no-repeat;
-      filter: brightness(0.58);
+      animation: heroZoom 14s ease-out forwards;
+      will-change: transform;
     }
-    .hero-content { position: relative; z-index: 2; padding: 0 3rem; max-width: 700px; }
+    @keyframes heroZoom {
+      from { transform: scale(1.1); }
+      to   { transform: scale(1.0); }
+    }
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(10,8,6,0.15) 0%,
+          rgba(10,8,6,0.30) 40%,
+          rgba(10,8,6,0.60) 100%);
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: var(--white);
+      padding: 0 2rem;
+      animation: fadeUp 1.2s 0.4s both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
     .hero-tag {
-      display: inline-block; background: var(--sky); color: var(--white);
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 0.3rem 0.9rem; margin-bottom: 1.4rem; border-radius: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.64rem;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1.8rem;
     }
-    .hero h1 {
-      font-family: var(--serif); font-size: clamp(2.2rem, 5vw, 3.8rem);
-      font-weight: 400; color: var(--white); line-height: 1.15; margin-bottom: 1.2rem;
+    .hero-tag::before,
+    .hero-tag::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(255,255,255,0.35);
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.4rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: rgba(255,255,255,0.75);
     }
     .hero-sub {
-      font-size: 1rem; color: rgba(255,255,255,0.85);
-      margin-bottom: 1.8rem; max-width: 500px; line-height: 1.75;
+      font-size: 0.88rem;
+      font-weight: 300;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 3rem;
     }
-    .hero-details {
-      display: flex; gap: 1.8rem; margin-bottom: 2.2rem; flex-wrap: wrap;
+    .hero-scroll-hint {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
     }
-    .hero-detail {
-      display: flex; align-items: center; gap: 0.5rem;
-      font-size: 0.9rem; color: rgba(255,255,255,0.85);
+    .hero-scroll-hint:hover { color: rgba(255,255,255,0.7); }
+    .hero-scroll-hint::after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
     }
-    .btn {
-      display: inline-block; font-family: var(--sans); font-size: 0.9rem;
-      font-weight: 600; text-decoration: none; padding: 0.85rem 2rem;
-      border-radius: 2px; cursor: pointer;
-      transition: background 0.25s, color 0.25s, opacity 0.25s; border: none;
-    }
-    .btn-primary { background: var(--green); color: var(--white); }
-    .btn-primary:hover { background: var(--green-lt); }
-    .btn-outline {
-      background: transparent; border: 2px solid var(--white);
-      color: var(--white); margin-left: 1rem;
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.15); }
-    .btn-green { background: var(--green); color: var(--white); }
-    .btn-green:hover { background: var(--green-lt); }
-    .btn-green-outline {
-      background: transparent; border: 2px solid var(--green); color: var(--green);
-    }
-    .btn-green-outline:hover { background: var(--green); color: var(--white); }
-    .btn-white-outline {
-      background: transparent; border: 2px solid rgba(255,255,255,0.7); color: var(--white);
-    }
-    .btn-white-outline:hover { background: rgba(255,255,255,0.1); }
 
-    /* INTRO */
-    .intro { display: grid; grid-template-columns: 1fr 1fr; min-height: 70vh; }
-    .intro-text {
-      padding: 6rem 4rem 6rem 5rem;
-      display: flex; flex-direction: column; justify-content: center;
+    /* ───────────────────────────────────────
+       UTILITY
+    ─────────────────────────────────────── */
+    .eyebrow {
+      font-size: 0.66rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--terra);
+      display: block;
+      margin-bottom: 1rem;
     }
-    .section-eyebrow {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--green); margin-bottom: 1rem;
+    .rule {
+      width: 36px;
+      height: 1px;
+      background: var(--terra);
+      margin-bottom: 1.5rem;
+    }
+    .rule-center { margin-left: auto; margin-right: auto; }
+
+    /* ───────────────────────────────────────
+       INTRO
+    ─────────────────────────────────────── */
+    #intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 80vh;
+    }
+    .intro-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 5rem 7rem 8vw;
     }
     .intro-text h2 {
-      font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.4rem);
-      font-weight: 400; line-height: 1.3; margin-bottom: 1.4rem;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.2vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.18;
+      margin-bottom: 1.6rem;
     }
     .intro-text p {
-      font-size: 0.97rem; line-height: 1.8; color: var(--text-lt);
-      max-width: 440px; margin-bottom: 1.4rem;
+      font-size: 1rem;
+      color: var(--text-lt);
+      line-height: 1.75;
+      max-width: 44ch;
+      margin-bottom: 1rem;
     }
-    .intro-text p:last-of-type { margin-bottom: 2rem; }
-    .intro-image { overflow: hidden; }
-    .intro-image img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.7s ease;
+    .intro-stats {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 0;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--bone);
+      width: fit-content;
     }
-    .intro-image:hover img { transform: scale(1.03); }
+    .stat {
+      padding-right: 2.5rem;
+      margin-right: 2.5rem;
+      border-right: 1px solid var(--bone);
+    }
+    .stat:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      color: var(--terra);
+      line-height: 1;
+      display: block;
+    }
+    .stat-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+      display: block;
+      margin-top: 0.3rem;
+    }
+    .intro-photo {
+      overflow: hidden;
+      position: relative;
+    }
+    .intro-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .intro-photo:hover img { transform: scale(1.04); }
 
-    /* INFO STRIP */
-    .info-strip {
-      background: var(--green); display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-top: 3px solid var(--sky);
+    /* ───────────────────────────────────────
+       GALLERY / MOSAIC
+    ─────────────────────────────────────── */
+    #gallery {
+      background: var(--bone);
+      padding: 7rem 6vw;
     }
-    .info-item {
-      padding: 2rem 1.8rem; border-right: 1px solid rgba(255,255,255,0.12);
-      display: flex; align-items: center; gap: 1rem; color: var(--white);
+    .gallery-head {
+      text-align: center;
+      margin-bottom: 4rem;
     }
-    .info-item:last-child { border-right: none; }
-    .info-icon { font-size: 1.6rem; }
-    .info-label {
-      font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--sky-lt); margin-bottom: 0.2rem;
+    .gallery-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 400;
     }
-    .info-value { font-family: var(--serif); font-size: 1rem; }
+    .mosaic {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr 1fr;
+      grid-template-rows: 290px 290px;
+      gap: 10px;
+    }
+    .m-item {
+      overflow: hidden;
+      position: relative;
+      background: var(--stone);
+    }
+    .m-item.tall { grid-row: 1 / 3; }
+    .m-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .m-item:hover img { transform: scale(1.06); }
 
-    /* GALLERY */
-    .gallery-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 320px 240px; gap: 3px;
+    /* ───────────────────────────────────────
+       QUOTE
+    ─────────────────────────────────────── */
+    #quote {
+      padding: 8rem 7vw;
+      text-align: center;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
     }
-    .gallery-item { overflow: hidden; }
-    .gallery-item img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
-      transition: transform 0.6s ease;
+    #quote::before {
+      content: '"';
+      font-family: var(--serif);
+      font-size: 22rem;
+      color: var(--bone);
+      position: absolute;
+      top: -4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
     }
-    .gallery-item:hover img { transform: scale(1.04); }
-    .gallery-item.tall { grid-row: span 2; }
+    #quote blockquote {
+      position: relative;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 680px;
+      margin: 0 auto 1.8rem;
+      color: var(--text);
+    }
+    #quote cite {
+      font-size: 0.68rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--stone);
+      font-style: normal;
+      position: relative;
+    }
 
-    /* FEATURES */
-    .section-pad { padding: 5rem; }
-    .features-bg { background: var(--tortora-lt); }
-    .section-title {
-      font-family: var(--serif); font-size: clamp(1.5rem, 2.5vw, 2rem);
-      font-weight: 400; margin-bottom: 0.6rem;
+    /* ───────────────────────────────────────
+       FEATURES (dark)
+    ─────────────────────────────────────── */
+    #features {
+      background: var(--black);
+      color: var(--white);
+      padding: 8rem 8vw;
     }
-    .section-intro {
-      font-size: 0.97rem; color: var(--text-lt); max-width: 540px;
-      line-height: 1.8; margin-bottom: 2.5rem;
+    .features-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: end;
+      padding-bottom: 4rem;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-    .feature-card {
-      background: var(--white); padding: 2rem 2rem;
-      border-top: 3px solid var(--sky);
+    .features-top h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.18;
     }
-    .feature-icon { font-size: 1.8rem; margin-bottom: 0.9rem; }
-    .feature-card h3 {
-      font-family: var(--serif); font-size: 1.05rem;
-      font-weight: 400; margin-bottom: 0.5rem;
+    .features-top p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.75;
     }
-    .feature-card p { font-size: 0.88rem; line-height: 1.75; color: var(--text-lt); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3.5rem 2.5rem;
+    }
+    .feat {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.8rem;
+    }
+    .feat-num {
+      font-family: var(--serif);
+      font-size: 0.72rem;
+      color: var(--terra-lt);
+      letter-spacing: 0.15em;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .feat h3 {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 400;
+      margin-bottom: 0.7rem;
+      color: var(--white);
+    }
+    .feat p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.7;
+    }
 
-    /* SLIDER */
-    .slider-section { position: relative; overflow: hidden; }
+    /* ───────────────────────────────────────
+       SLIDER
+    ─────────────────────────────────────── */
+    #slider-section {
+      background: var(--white);
+      padding: 8rem 0 7rem;
+      overflow: hidden;
+    }
+    .slider-head {
+      text-align: center;
+      padding: 0 7vw;
+      margin-bottom: 3.5rem;
+    }
+    .slider-head h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400;
+    }
+    .slider-wrap { overflow: hidden; position: relative; }
     .slider-track {
-      display: flex; transition: transform 0.65s cubic-bezier(0.77,0,0.175,1);
+      display: flex;
+      transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    .slide { min-width: 100%; height: 60vh; flex-shrink: 0; overflow: hidden; }
-    .slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .slider-ui {
-      position: absolute; bottom: 1.5rem; right: 2rem;
-      display: flex; align-items: center; gap: 0.8rem; z-index: 5;
+    .slide {
+      min-width: 100%;
+      height: 62vh;
+      min-height: 400px;
     }
-    .slider-counter { font-size: 0.8rem; color: rgba(255,255,255,0.8); letter-spacing: 0.1em; }
-    .slider-btn {
-      width: 40px; height: 40px;
-      border: 1px solid rgba(255,255,255,0.6); background: rgba(0,0,0,0.25);
-      color: white; cursor: pointer; font-size: 1rem;
+    .slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .slider-foot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding: 0 7vw;
+    }
+    .s-btn {
+      background: none;
+      border: 1px solid var(--stone);
+      width: 46px; height: 46px;
       display: flex; align-items: center; justify-content: center;
-      transition: background 0.25s; border-radius: 2px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-lt);
+      transition: border-color 0.2s, color 0.2s;
+      font-family: var(--sans);
     }
-    .slider-btn:hover { background: var(--green); border-color: var(--green); }
+    .s-btn:hover { border-color: var(--terra); color: var(--terra); }
+    .s-count {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      color: var(--stone);
+      letter-spacing: 0.12em;
+      min-width: 60px;
+      text-align: center;
+    }
 
-    /* BOOKING */
-    .booking { display: grid; grid-template-columns: 1fr 1fr; }
-    .booking-info {
-      background: var(--green); color: var(--white);
-      padding: 5rem 4rem; display: flex; flex-direction: column; justify-content: center;
+    /* ───────────────────────────────────────
+       BOOKING
+    ─────────────────────────────────────── */
+    #booking {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
     }
-    .booking-info .section-eyebrow { color: var(--sky-lt); }
-    .booking-info h2 {
-      font-family: var(--serif); font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      font-weight: 400; margin: 0.8rem 0 1.2rem; line-height: 1.3; color: var(--white);
+    .booking-left {
+      background: var(--bone);
+      padding: 7rem 5rem 7rem 8vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    .booking-info p {
-      font-size: 0.95rem; line-height: 1.8; color: rgba(255,255,255,0.75);
-      max-width: 380px; margin-bottom: 0.8rem;
+    .booking-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
     }
-    .booking-perks { margin: 1.2rem 0 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .booking-perk {
-      font-size: 0.9rem; color: rgba(255,255,255,0.8);
-      display: flex; align-items: center; gap: 0.6rem;
+    .booking-left p {
+      font-size: 0.95rem;
+      color: var(--text-lt);
+      line-height: 1.75;
+      max-width: 42ch;
+      margin-bottom: 1rem;
     }
-    .booking-perk::before { content: '✓'; color: var(--sky); font-weight: 700; }
-    .booking-form-panel {
-      background: var(--tortora-lt); padding: 4rem 3.5rem;
-      display: flex; flex-direction: column; justify-content: center;
+    .also-on {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--stone);
     }
-    .booking-form-panel h3 {
-      font-family: var(--serif); font-size: 1.4rem;
-      font-weight: 400; margin-bottom: 1.8rem;
+    .also-on-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 0.5rem;
     }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { display: flex; flex-direction: column; margin-bottom: 1rem; }
+    .platform-links { display: flex; gap: 1.2rem; }
+    .plat {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text-lt);
+      border-bottom: 1px solid var(--stone);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .plat:hover { color: var(--terra); border-color: var(--terra); }
+
+    .booking-right {
+      background: var(--white);
+      padding: 7rem 8vw 7rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      margin-bottom: 1.3rem;
+    }
     .form-group label {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--text-lt); margin-bottom: 0.35rem;
+      font-size: 0.64rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--stone);
     }
-    .form-group input, .form-group select, .form-group textarea {
-      background: var(--white); border: 1px solid var(--tortora);
-      padding: 0.6rem 0.8rem; font-family: var(--sans); font-size: 0.92rem;
-      color: var(--text); outline: none; border-radius: 2px; transition: border-color 0.2s;
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--bone);
+      padding: 0.65rem 0;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.25s;
+      width: 100%;
+      border-radius: 0;
+      -webkit-appearance: none;
     }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--green);
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-bottom-color: var(--terra); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group textarea { resize: vertical; min-height: 72px; }
+    .btn-submit {
+      margin-top: 1.2rem;
+      padding: 1rem 2.8rem;
+      background: var(--terra);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s;
+      width: 100%;
     }
-    .form-group textarea { resize: none; height: 80px; }
-    .form-submit {
-      margin-top: 0.4rem; width: 100%;
-      font-family: var(--sans); font-size: 0.92rem; font-weight: 600;
-      padding: 0.9rem; background: var(--green); color: var(--white);
-      border: none; cursor: pointer; border-radius: 2px; transition: background 0.25s;
-    }
-    .form-submit:hover { background: var(--green-lt); }
+    .btn-submit:hover { background: var(--terra-dk); }
 
-    /* MAP */
-    .map-section { display: grid; grid-template-columns: 1fr 2fr; }
-    .map-info {
-      padding: 4rem 3rem; background: var(--white);
-      border-right: 1px solid #e0dbd3;
-      display: flex; flex-direction: column; justify-content: center;
+    /* ───────────────────────────────────────
+       MAP
+    ─────────────────────────────────────── */
+    #map { background: var(--white); }
+    .map-header {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 3.5rem 8vw 2rem;
+      border-bottom: 1px solid var(--bone);
     }
-    .map-info h3 {
-      font-family: var(--serif); font-size: 1.4rem;
-      font-weight: 400; margin: 0.5rem 0 1.2rem;
+    .map-header-text h3 {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
     }
-    .map-info p { font-size: 0.9rem; line-height: 1.8; color: var(--text-lt); margin-bottom: 0.5rem; }
-    .map-frame { height: 440px; }
-    .map-frame iframe { width: 100%; height: 100%; border: none; display: block; filter: grayscale(20%); }
+    .map-header-text p { font-size: 0.85rem; color: var(--text-lt); }
+    .map-sep { width: 1px; height: 50px; background: var(--bone); }
+    .map-note { font-size: 0.78rem; color: var(--stone); line-height: 1.5; max-width: 28ch; }
+    .map-embed {
+      width: 100%;
+      height: 440px;
+      border: none;
+      display: block;
+      filter: saturate(0.5) contrast(1.05) brightness(1.02);
+    }
 
-    /* FOOTER */
+    /* ───────────────────────────────────────
+       FOOTER
+    ─────────────────────────────────────── */
     footer {
-      background: var(--green); color: rgba(255,255,255,0.6);
-      padding: 3.5rem 5rem; display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem;
+      background: var(--black);
+      padding: 6rem 8vw 2.5rem;
     }
-    .footer-logo {
-      font-family: var(--serif); font-size: 1.2rem;
-      color: var(--white); margin-bottom: 0.7rem;
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    .footer-tagline { font-size: 0.88rem; line-height: 1.7; }
-    footer h4 {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--sky-lt); margin-bottom: 1rem;
+    .footer-brand-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      display: block;
     }
-    footer a {
-      display: block; font-size: 0.88rem; color: rgba(255,255,255,0.65);
-      text-decoration: none; margin-bottom: 0.5rem; transition: color 0.2s;
+    .footer-brand p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.7;
+      max-width: 28ch;
     }
-    footer a:hover { color: var(--white); }
+    .footer-col-title {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+    .footer-col a {
+      display: block;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      margin-bottom: 0.7rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--terra-lt); }
     .footer-bottom {
-      background: #2e4436; padding: 1.2rem 5rem;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 2.5rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.2);
     }
-    .footer-bottom span { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
 
-    /* MOBILE */
-    @media (max-width: 768px) {
-      nav { padding: 1rem 1.2rem; }
-      .nav-links a:not(.nav-cta) { display: none; }
-      .hero-content { padding: 0 1.4rem; }
-      .hero-details { gap: 1rem; }
-      .btn-outline { margin-left: 0; margin-top: 0.8rem; display: block; text-align: center; }
-      .intro { grid-template-columns: 1fr; }
-      .intro-text { padding: 3.5rem 1.4rem; }
-      .intro-image { height: 55vw; }
-      .info-strip { grid-template-columns: 1fr 1fr; }
-      .info-item { border-bottom: 1px solid rgba(255,255,255,0.12); }
-      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-      .gallery-item.tall { grid-row: span 1; }
-      .section-pad { padding: 3rem 1.4rem; }
+    /* ───────────────────────────────────────
+       RESPONSIVE
+    ─────────────────────────────────────── */
+    @media (max-width: 960px) {
+      #nav {
+        grid-template-columns: auto 1fr;
+        padding: 1rem 1.5rem;
+      }
+      .nav-left { display: none; }
+      .nav-right { justify-content: flex-end; }
+
+      #intro { grid-template-columns: 1fr; }
+      .intro-text { padding: 5rem 2rem; }
+      .intro-photo { height: 60vw; }
+      .intro-stats { grid-template-columns: repeat(2, auto); }
+
+      .mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+      .m-item.tall { grid-row: auto; }
+
+      .features-top { grid-template-columns: 1fr; gap: 2rem; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+
+      #booking { grid-template-columns: 1fr; }
+      .booking-left { padding: 5rem 2rem 3rem; }
+      .booking-right { padding: 3rem 2rem 5rem; }
+
+      .map-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .map-sep { display: none; }
+
+      .footer-top { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title { font-size: clamp(2.8rem, 14vw, 5rem); }
       .features-grid { grid-template-columns: 1fr; }
-      .booking { grid-template-columns: 1fr; }
-      .booking-info { padding: 3.5rem 1.4rem; }
-      .booking-form-panel { padding: 3rem 1.4rem; }
       .form-row { grid-template-columns: 1fr; }
-      .map-section { grid-template-columns: 1fr; }
-      .map-info { padding: 2.5rem 1.4rem; }
-      .map-frame { height: 280px; }
-      footer { grid-template-columns: 1fr; padding: 3rem 1.4rem; }
-      .footer-bottom { padding: 1rem 1.4rem; flex-direction: column; gap: 0.4rem; text-align: center; }
+      #gallery { padding: 5rem 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="nav">
-    <a href="#" class="nav-logo">Trullo Rocca Santa</a>
-    <div class="nav-links">
-      <a href="#trullo">Il Trullo</a>
-      <a href="#gallery">Galleria</a>
-      <a href="#map">Dove Siamo</a>
-      <a href="#booking" class="nav-cta">Prenota</a>
-    </div>
-  </nav>
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="#intro"   class="nav-link">Il Trullo</a>
+    <a href="#gallery" class="nav-link">Galleria</a>
+    <a href="#map"     class="nav-link">Dove Siamo</a>
+  </div>
+  <a href="#" class="nav-logo">Trullo Rocca Santa</a>
+  <div class="nav-right">
+    <a href="mailto:info@roccasanta.it" class="nav-link">Contatti</a>
+    <a href="#booking" class="nav-cta">Prenota</a>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <span class="hero-tag">Ostuni · Puglia</span>
-      <h1>Benvenuti al Trullo Rocca Santa</h1>
-      <p class="hero-sub">Il nostro trullo nella campagna di Ostuni, a pochi minuti dal mare e dalla città bianca. Vi accogliamo con semplicità, con il piacere di condividere con voi la nostra Puglia.</p>
-      <div class="hero-details">
-        <div class="hero-detail">🛏 2 camere + divano letto</div>
-        <div class="hero-detail">👥 Fino a 6 ospiti</div>
-        <div class="hero-detail">🌿 Uso esclusivo</div>
-      </div>
-      <a href="#booking" class="btn btn-primary">Richiedi disponibilità</a>
-      <a href="#trullo" class="btn btn-outline">Scopri il trullo</a>
-    </div>
-  </section>
+<!-- ═══════ HERO ═══════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Ostuni &nbsp;·&nbsp; Puglia &nbsp;·&nbsp; Italia</span>
+    <h1 class="hero-title">Trullo<br><em>Rocca Santa</em></h1>
+    <p class="hero-sub">Un trullo storico restaurato — dove la pietra racconta il tempo</p>
+    <a href="#intro" class="hero-scroll-hint">Scopri</a>
+  </div>
+</section>
 
-  <!-- INTRO -->
-  <section class="intro" id="trullo">
-    <div class="intro-text">
-      <p class="section-eyebrow">Il Trullo</p>
-      <h2>Un trullo di famiglia,<br>nella campagna di Ostuni</h2>
-      <p>
-        Rocca Santa è il trullo di famiglia, nella campagna di Ostuni. Lo abbiamo restaurato rispettando quello che era: pietra, volte a cono, materiali locali. Niente di forzato.
-      </p>
-      <p>
-        Se cercate un posto tranquillo dove svegliarvi con il silenzio e avere tutto il necessario per stare bene, potrebbe fare al caso vostro.
-      </p>
-      <a href="#gallery" class="btn btn-green-outline">Vedi le foto</a>
-    </div>
-    <div class="intro-image">
-      <img src="photos/out1.jpg" alt="Esterno del Trullo Rocca Santa" loading="lazy" />
-    </div>
-  </section>
-
-  <!-- INFO STRIP -->
-  <div class="info-strip">
-    <div class="info-item">
-      <div class="info-icon">🛏</div>
-      <div>
-        <div class="info-label">Camere</div>
-        <div class="info-value">2 camere + divano letto</div>
+<!-- ═══════ INTRO ═══════ -->
+<section id="intro">
+  <div class="intro-text">
+    <span class="eyebrow">Il Trullo</span>
+    <h2>Pietra antica,<br>comfort moderno</h2>
+    <p>Trullo Rocca Santa è un autentico trullo pugliese restaurato con cura, immerso tra gli ulivi a pochi chilometri dal centro storico di Ostuni, la Città Bianca.</p>
+    <p>Ogni dettaglio è stato pensato per preservare l'anima del luogo: volte in pietra calcarea, pavimenti tradizionali, e il silenzio della campagna che entra da ogni finestra.</p>
+    <div class="intro-stats">
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Ospiti</span>
       </div>
-    </div>
-    <div class="info-item">
-      <div class="info-icon">👥</div>
-      <div>
-        <div class="info-label">Ospiti</div>
-        <div class="info-value">Fino a 6 persone</div>
+      <div class="stat">
+        <span class="stat-num">1</span>
+        <span class="stat-label">Camera</span>
       </div>
-    </div>
-    <div class="info-item">
-      <div class="info-icon">🚿</div>
-      <div>
-        <div class="info-label">Bagni</div>
-        <div class="info-value">2 (1 interno, 1 esterno)</div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Letti</span>
       </div>
-    </div>
-    <div class="info-item">
-      <div class="info-icon">📍</div>
-      <div>
-        <div class="info-label">Posizione</div>
-        <div class="info-value">Ostuni, 5 min dal mare</div>
+      <div class="stat">
+        <span class="stat-num">2</span>
+        <span class="stat-label">Bagni</span>
       </div>
     </div>
   </div>
+  <div class="intro-photo">
+    <img src="photos/out1.jpg" alt="Esterno del Trullo Rocca Santa" loading="lazy" />
+  </div>
+</section>
 
-  <!-- GALLERY -->
-  <section class="gallery-grid" id="gallery">
-    <div class="gallery-item tall">
+<!-- ═══════ GALLERY ═══════ -->
+<section id="gallery">
+  <div class="gallery-head">
+    <div class="rule rule-center"></div>
+    <h2>Gli Spazi</h2>
+  </div>
+  <div class="mosaic">
+    <div class="m-item tall">
       <img src="photos/patio.jpg" alt="Patio esterno" loading="lazy" />
     </div>
-    <div class="gallery-item">
-      <img src="photos/out2.jpg" alt="Esterno trullo" loading="lazy" />
-    </div>
-    <div class="gallery-item">
+    <div class="m-item">
       <img src="photos/letto.jpg" alt="Camera da letto" loading="lazy" />
     </div>
-    <div class="gallery-item">
+    <div class="m-item">
       <img src="photos/cucina.jpg" alt="Cucina" loading="lazy" />
     </div>
-    <div class="gallery-item">
+    <div class="m-item">
       <img src="photos/bagno.jpg" alt="Bagno" loading="lazy" />
     </div>
-  </section>
-
-  <!-- FEATURES -->
-  <section class="section-pad features-bg">
-    <p class="section-eyebrow">Cosa troverete</p>
-    <h2 class="section-title">Il trullo e i suoi spazi</h2>
-    <p class="section-intro">Vi descriviamo con onestà quello che offre Rocca Santa, senza aggiungere né togliere nulla.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🏠</div>
-        <h3>Il trullo in pietra</h3>
-        <p>Costruzione tradizionale pugliese con volte a cono originali, muri in pietra calcarea a secco e interni curati nel rispetto dei materiali locali.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌿</div>
-        <h3>Giardino e patio</h3>
-        <p>Spazio esterno privato tra gli ulivi, con area pranzo all'aperto. Il posto giusto per mangiare all'ombra o guardare il tramonto sulla campagna.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🍳</div>
-        <h3>Cucina attrezzata</h3>
-        <p>Cucina completa per chi vuole cucinare — anche solo riscaldare la burrata comprata al mercato di Ostuni. Frigorifero, piano cottura, tutto il necessario.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📶</div>
-        <h3>Wi-Fi e comfort</h3>
-        <p>Connessione Wi-Fi, aria condizionata, biancheria inclusa. Non manca niente di essenziale per stare comodi.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🚗</div>
-        <h3>Parcheggio privato</h3>
-        <p>Posto auto privato all'interno della proprietà. Utile, perché per esplorare la zona una macchina è quasi indispensabile.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📍</div>
-        <h3>Posizione comoda</h3>
-        <p>A 10 minuti da Ostuni, 30 dall'aeroporto di Brindisi, 5 minuti dalle prime spiagge. Da qui si raggiunge facilmente tutto il meglio della Puglia.</p>
-      </div>
+    <div class="m-item">
+      <img src="photos/out2.jpg" alt="Giardino" loading="lazy" />
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SLIDER -->
-  <section class="slider-section">
+<!-- ═══════ QUOTE ═══════ -->
+<section id="quote">
+  <blockquote>
+    Il trullo non è solo un'abitazione.<br>
+    È una promessa di silenzio, di pietra e di luce.
+  </blockquote>
+  <cite>Ostuni &nbsp;·&nbsp; Valle d'Itria</cite>
+</section>
+
+<!-- ═══════ FEATURES ═══════ -->
+<section id="features">
+  <div class="features-top">
+    <h2>Tutto ciò che serve,<br>niente di superfluo.</h2>
+    <p>Rocca Santa è pensato per chi cerca un'esperienza autentica: la semplicità di una dimora storica con ogni comfort contemporaneo, in un paesaggio che toglie il fiato.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feat">
+      <span class="feat-num">01</span>
+      <h3>Piscina privata</h3>
+      <p>Una piscina riservata esclusivamente agli ospiti, immersa nel verde degli ulivi centenari.</p>
+    </div>
+    <div class="feat">
+      <span class="feat-num">02</span>
+      <h3>Cucina attrezzata</h3>
+      <p>Cucina completamente equipaggiata per cucinare con i prodotti freschi del mercato locale.</p>
+    </div>
+    <div class="feat">
+      <span class="feat-num">03</span>
+      <h3>Wi-Fi &amp; aria condizionata</h3>
+      <p>Connessione veloce e climatizzazione in ogni ambiente, per un soggiorno sempre confortevole.</p>
+    </div>
+    <div class="feat">
+      <span class="feat-num">04</span>
+      <h3>Patio &amp; barbecue</h3>
+      <p>Ampio spazio esterno ombreggiato con tavolo da pranzo e barbecue per le serate pugliesi.</p>
+    </div>
+    <div class="feat">
+      <span class="feat-num">05</span>
+      <h3>Posizione privilegiata</h3>
+      <p>A pochi chilometri da Ostuni, con facile accesso alle spiagge di Torre Canne e Fasano.</p>
+    </div>
+    <div class="feat">
+      <span class="feat-num">06</span>
+      <h3>Check-in flessibile</h3>
+      <p>Arrivo e partenza concordabili direttamente con i proprietari per la massima comodità.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SLIDER ═══════ -->
+<section id="slider-section">
+  <div class="slider-head">
+    <div class="rule rule-center"></div>
+    <h2>Intorno al Trullo</h2>
+  </div>
+  <div class="slider-wrap">
     <div class="slider-track" id="sliderTrack">
-      <div class="slide"><img src="photos/vista1.jpg" alt="Campagna pugliese" /></div>
-      <div class="slide"><img src="photos/vista2.jpg" alt="Vista panoramica" /></div>
-      <div class="slide"><img src="photos/patio2.jpg" alt="Patio" /></div>
-      <div class="slide"><img src="photos/letto2.jpg" alt="Camera da letto" /></div>
-      <div class="slide"><img src="photos/out3.jpg" alt="Esterno" /></div>
+      <div class="slide"><img src="photos/vista1.jpg"  alt="Campagna pugliese" /></div>
+      <div class="slide"><img src="photos/vista2.jpg"  alt="Ulivi storici" /></div>
+      <div class="slide"><img src="photos/vista3.jpg"  alt="Tramonto sulla Valle d'Itria" /></div>
+      <div class="slide"><img src="photos/patio2.jpg"  alt="Patio al tramonto" /></div>
+      <div class="slide"><img src="photos/vista4.jpg"  alt="Panorama intorno al trullo" /></div>
     </div>
-    <div class="slider-ui">
-      <span cla
+  </div>
+  <div class="slider-foot">
+    <button class="s-btn" id="prevBtn" aria-label="Immagine precedente">&#8592;</button>
+    <span class="s-count"><span id="slideNum">01</span> / <span id="slideTotal">05</span></span>
+    <button class="s-btn" id="nextBtn" aria-label="Immagine successiva">&#8594;</button>
+  </div>
+</section>
+
+<!-- ═══════ BOOKING ═══════ -->
+<section id="booking">
+  <div class="booking-left">
+    <span class="eyebrow">Prenota</span>
+    <h2>Il tuo soggiorno<br>a Rocca Santa</h2>
+    <p>Scrivici direttamente per conoscere disponibilità e tariffe. La prenotazione diretta garantisce il miglior prezzo e un contatto personale con i proprietari.</p>
+    <p>Risposta garantita entro 24 ore.</p>
+    <div class="also-on">
+      <span class="also-on-label">Disponibile anche su</span>
+      <div class="platform-links">
+        <a href="https://www.airbnb.com"     target="_blank" rel="noopener" class="plat">Airbnb</a>
+        <a href="https://www.booking.com"    target="_blank" rel="noopener" class="plat">Booking.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="booking-right">
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" autocomplete="given-name" required />
+        </div>
+        <div class="form-group">
+          <label for="cognome">Cognome</label>
+          <input type="text" id="cognome" name="cognome" autocomplete="family-name" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="arrivo">Arrivo</label>
+          <input type="date" id="arrivo" name="arrivo" required />
+        </div>
+        <div class="form-group">
+          <label for="partenza">Partenza</label>
+          <input type="date" id="partenza" name="partenza" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ospiti">Numero ospiti</label>
+        <select id="ospiti" name="ospiti">
+          <option value="1">1 ospite</option>
+          <option value="2">2 ospiti</option>
+          <option value="3">3 ospiti</option>
+          <option value="4">4 ospiti</option>
+          <option value="5">5 ospiti</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="messaggio">Messaggio (opzionale)</label>
+        <textarea id="messaggio" name="messaggio" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Invia Richiesta</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════ MAP ═══════ -->
+<section id="map">
+  <div class="map-header">
+    <div class="map-header-text">
+      <h3>Dove Siamo</h3>
+      <p>Nelle campagne intorno a Ostuni, Puglia</p>
+    </div>
+    <div class="map-sep"></div>
+    <p class="map-note">La posizione esatta verrà comunicata dopo la conferma della prenotazione.</p>
+  </div>
+  <iframe
+    class="map-embed"
+    src="https://www.openstreetmap.org/export/embed.html?bbox=17.44%2C40.68%2C17.64%2C40.78&layer=mapnik&marker=40.7295%2C17.5787"
+    title="Posizione approssimativa — Ostuni, Puglia"
+    loading="lazy"
+    allowfullscreen>
+  </iframe>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-brand-name">Trullo Rocca Santa</span>
+      <p>Un trullo storico restaurato nelle campagne di Ostuni. Tradizione, bellezza e silenzio.</p>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Esplora</span>
+      <a href="#intro">Il Trullo</a>
+      <a href="#gallery">Galleria</a>
+      <a href="#features">Dotazioni</a>
+      <a href="#map">Dove Siamo</a>
+      <a href="#booking">Prenota</a>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Contatti</span>
+      <a href="mailto:info@roccasanta.it">info@roccasanta.it</a>
+      <a href="https://www.airbnb.com"  target="_blank" rel="noopener">Airbnb</a>
+      <a href="https://www.booking.com" target="_blank" rel="noopener">Booking.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Trullo Rocca Santa — Ostuni, Puglia</span>
+    <span>P.IVA / CF: [da aggiungere]</span>
+  </div>
+</footer>
+
+<script>
+  // ── NAV scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── SLIDER ──
+  const track     = document.getElementById('sliderTrack');
+  const slideNumEl= document.getElementById('slideNum');
+  const slides    = track.querySelectorAll('.slide');
+  let current = 0;
+  const total = slides.length;
+  document.getElementById('slideTotal').textContent = String(total).padStart(2,'0');
+
+  function goTo(n) {
+    current = (n + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    slideNumEl.textContent = String(current + 1).padStart(2,'0');
+  }
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+
+  // ── Touch swipe on slider ──
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend',   e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  });
+</script>
+
+</body>
+</html>
