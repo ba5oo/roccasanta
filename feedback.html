@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lasciaci un feedback — Trullo Rocca Santa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bone: #f5f1ea;
+    --stone: #e8e2d6;
+    --stone-dark: #cfc6b5;
+    --ink: #2e2a24;
+    --ink-soft: #5c564a;
+    --terracotta: #a0522a;
+    --terracotta-dark: #7e3f20;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bone);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+  }
+
+  header {
+    padding: 32px 24px 16px;
+    text-align: center;
+    border-bottom: 1px solid var(--stone-dark);
+  }
+
+  header a.home-link {
+    display: inline-block;
+    margin-bottom: 16px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+  }
+
+  header a.home-link:hover { color: var(--terracotta); }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    margin: 0 0 8px;
+  }
+
+  .subtitle {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .lang-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 20px;
+  }
+
+  .lang-toggle button {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 6px 16px;
+    border: 1px solid var(--stone-dark);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .lang-toggle button:first-child { border-radius: 4px 0 0 4px; }
+  .lang-toggle button:last-child { border-radius: 0 4px 4px 0; }
+
+  .lang-toggle button.active {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--bone);
+  }
+
+  main {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .question {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .question label.main-label {
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
+
+  .scale {
+    display: flex;
+    gap: 8px;
+  }
+
+  .scale label {
+    flex: 1;
+    text-align: center;
+    border: 1px solid var(--stone-dark);
+    border-radius: 6px;
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    background: #fff;
+    transition: all 0.15s ease;
+  }
+
+  .scale input { display: none; }
+
+  .scale input:checked + label {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--bone);
+    font-weight: 700;
+  }
+
+  .radio-group, .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .radio-group label, .checkbox-group label {
+    border: 1px solid var(--stone-dark);
+    border-radius: 6px;
+    padding: 9px 16px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    background: #fff;
+    color: var(--ink-soft);
+    transition: all 0.15s ease;
+  }
+
+  .radio-group input, .checkbox-group input {
+    display: none;
+  }
+
+  .radio-group input:checked + label,
+  .checkbox-group input:checked + label {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+    color: var(--bone);
+    font-weight: 700;
+  }
+
+  .recommend-to {
+    display: none;
+    margin-top: 6px;
+    padding-left: 2px;
+  }
+
+  .recommend-to.visible { display: block; }
+
+  .recommend-to .sub-label {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    border: 1px solid var(--stone-dark);
+    border-radius: 6px;
+    padding: 12px 14px;
+    background: #fff;
+    color: var(--ink);
+    resize: vertical;
+    min-height: 90px;
+  }
+
+  textarea:focus, input:focus {
+    outline: 2px solid var(--terracotta);
+    outline-offset: 1px;
+  }
+
+  .contact-note {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    background: var(--stone);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+
+  .contact-note a { color: var(--terracotta-dark); }
+
+  button[type="submit"] {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    background: var(--terracotta);
+    color: var(--bone);
+    border: none;
+    border-radius: 6px;
+    padding: 14px 0;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  button[type="submit"]:hover { background: var(--terracotta-dark); }
+
+  .thanks {
+    display: none;
+    text-align: center;
+    padding: 60px 24px;
+  }
+
+  .thanks.visible { display: block; }
+
+  .thanks h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 1.8rem;
+  }
+
+  [data-lang="en"] { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="home-link" href="index.html" data-lang="it">← Torna al sito</a>
+  <a class="home-link" href="index.html" data-lang="en">← Back to site</a>
+
+  <h1 data-lang="it">Com'è andato il tuo soggiorno?</h1>
+  <h1 data-lang="en">How was your stay?</h1>
+
+  <p class="subtitle" data-lang="it">Il tuo feedback ci aiuta a migliorare Trullo Rocca Santa per i prossimi ospiti. Bastano due minuti.</p>
+  <p class="subtitle" data-lang="en">Your feedback helps us improve Trullo Rocca Santa for future guests. It takes two minutes.</p>
+
+  <div class="lang-toggle">
+    <button type="button" id="btn-it" class="active" onclick="setLang('it')">ITALIANO</button>
+    <button type="button" id="btn-en" onclick="setLang('en')">ENGLISH</button>
+  </div>
+</header>
+
+<main>
+  <form id="feedback-form" action="https://formspree.io/f/xdenpqpg" method="POST">
+
+    <input type="hidden" name="_subject" value="Nuovo feedback — Trullo Rocca Santa">
+
+    <!-- Q1 Pulizia -->
+    <div class="question">
+      <label class="main-label" data-lang="it">1. Come valuti la pulizia dell'alloggio?</label>
+      <label class="main-label" data-lang="en">1. How would you rate the cleanliness of the property?</label>
+      <div class="scale">
+        <input type="radio" id="q1-1" name="pulizia" value="1" required><label for="q1-1">1</label>
+        <input type="radio" id="q1-2" name="pulizia" value="2"><label for="q1-2">2</label>
+        <input type="radio" id="q1-3" name="pulizia" value="3"><label for="q1-3">3</label>
+        <input type="radio" id="q1-4" name="pulizia" value="4"><label for="q1-4">4</label>
+        <input type="radio" id="q1-5" name="pulizia" value="5"><label for="q1-5">5</label>
+      </div>
+    </div>
+
+    <!-- Q2 Comunicazione -->
+    <div class="question">
+      <label class="main-label" data-lang="it">2. La comunicazione prima dell'arrivo è stata chiara?</label>
+      <label class="main-label" data-lang="en">2. Was pre-arrival communication clear?</label>
+      <div class="scale">
+        <input type="radio" id="q2-1" name="comunicazione" value="1" required><label for="q2-1">1</label>
+        <input type="radio" id="q2-2" name="comunicazione" value="2"><label for="q2-2">2</label>
+        <input type="radio" id="q2-3" name="comunicazione" value="3"><label for="q2-3">3</label>
+        <input type="radio" id="q2-4" name="comunicazione" value="4"><label for="q2-4">4</label>
+        <input type="radio" id="q2-5" name="comunicazione" value="5"><label for="q2-5">5</label>
+      </div>
+    </div>
+
+    <!-- Q3 Corrispondenza annuncio -->
+    <div class="question">
+      <label class="main-label" data-lang="it">3. La struttura corrispondeva a quanto descritto nell'annuncio?</label>
+      <label class="main-label" data-lang="en">3. Did the property match its listing description?</label>
+      <div class="scale">
+        <input type="radio" id="q3-1" name="corrispondenza" value="1" required><label for="q3-1">1</label>
+        <input type="radio" id="q3-2" name="corrispondenza" value="2"><label for="q3-2">2</label>
+        <input type="radio" id="q3-3" name="corrispondenza" value="3"><label for="q3-3">3</label>
+        <input type="radio" id="q3-4" name="corrispondenza" value="4"><label for="q3-4">4</label>
+        <input type="radio" id="q3-5" name="corrispondenza" value="5"><label for="q3-5">5</label>
+      </div>
+    </div>
+
+    <!-- Q4 Rapporto qualità-prezzo -->
+    <div class="question">
+      <label class="main-label" data-lang="it">4. Come valuti il rapporto qualità-prezzo?</label>
+      <label class="main-label" data-lang="en">4. How would you rate value for money?</label>
+      <div class="scale">
+        <input type="radio" id="q4-1" name="qualita_prezzo" value="1" required><label for="q4-1">1</label>
+        <input type="radio" id="q4-2" name="qualita_prezzo" value="2"><label for="q4-2">2</label>
+        <input type="radio" id="q4-3" name="qualita_prezzo" value="3"><label for="q4-3">3</label>
+        <input type="radio" id="q4-4" name="qualita_prezzo" value="4"><label for="q4-4">4</label>
+        <input type="radio" id="q4-5" name="qualita_prezzo" value="5"><label for="q4-5">5</label>
+      </div>
+    </div>
+
+    <!-- Q5 Consiglieresti -->
+    <div class="question">
+      <label class="main-label" data-lang="it">5. Consiglieresti Trullo Rocca Santa ad altri?</label>
+      <label class="main-label" data-lang="en">5. Would you recommend Trullo Rocca Santa to others?</label>
+      <div class="radio-group">
+        <input type="radio" id="rec-si" name="consiglieresti" value="Si" onchange="toggleRecommendTo(true)" required>
+        <label for="rec-si" data-lang="it">Sì</label>
+        <label for="rec-si" data-lang="en">Yes</label>
+
+        <input type="radio" id="rec-no" name="consiglieresti" value="No" onchange="toggleRecommendTo(false)">
+        <label for="rec-no" data-lang="it">No</label>
+        <label for="rec-no" data-lang="en">No</label>
+
+        <input type="radio" id="rec-forse" name="consiglieresti" value="Forse" onchange="toggleRecommendTo(false)">
+        <label for="rec-forse" data-lang="it">Forse</label>
+        <label for="rec-forse" data-lang="en">Maybe</label>
+      </div>
+
+      <div class="recommend-to" id="recommend-to-box">
+        <span class="sub-label" data-lang="it">Se sì, a chi?</span>
+        <span class="sub-label" data-lang="en">If yes, to whom?</span>
+        <div class="checkbox-group">
+          <input type="checkbox" id="to-coppie" name="a_chi" value="Coppie">
+          <label for="to-coppie" data-lang="it">Coppie</label>
+          <label for="to-coppie" data-lang="en">Couples</label>
+
+          <input type="checkbox" id="to-famiglie" name="a_chi" value="Famiglie">
+          <label for="to-famiglie" data-lang="it">Famiglie</label>
+          <label for="to-famiglie" data-lang="en">Families</label>
+
+          <input type="checkbox" id="to-gruppi" name="a_chi" value="Gruppi di amici">
+          <label for="to-gruppi" data-lang="it">Gruppi di amici</label>
+          <label for="to-gruppi" data-lang="en">Groups of friends</label>
+
+          <input type="checkbox" id="to-solo" name="a_chi" value="Viaggiatori singoli">
+          <label for="to-solo" data-lang="it">Viaggiatori singoli</label>
+          <label for="to-solo" data-lang="en">Solo travelers</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q6 Cosa ti è piaciuto / miglioreresti -->
+    <div class="question">
+      <label class="main-label" for="piaciuto" data-lang="it">6. C'è qualcosa che ti è piaciuto particolarmente o che miglioreresti?</label>
+      <label class="main-label" for="piaciuto" data-lang="en">6. Anything you particularly loved or would improve?</label>
+      <textarea id="piaciuto" name="piaciuto_migliorare" rows="4"></textarea>
+    </div>
+
+    <!-- Q7 Altro -->
+    <div class="question">
+      <label class="main-label" for="altro" data-lang="it">7. C'è altro che vorresti aggiungere?</label>
+      <label class="main-label" for="altro" data-lang="en">7. Anything else you'd like to add?</label>
+      <textarea id="altro" name="altro" rows="4"></textarea>
+    </div>
+
+    <p class="contact-note" data-lang="it">
+      Per qualsiasi altra cosa, scrivici su WhatsApp o a <a href="mailto:postmaster@roccasanta.com">postmaster@roccasanta.com</a>
+    </p>
+    <p class="contact-note" data-lang="en">
+      For anything else, feel free to write to us on WhatsApp or at <a href="mailto:postmaster@roccasanta.com">postmaster@roccasanta.com</a>
+    </p>
+
+    <button type="submit" data-lang="it">Invia feedback</button>
+    <button type="submit" data-lang="en">Send feedback</button>
+  </form>
+
+  <div class="thanks" id="thanks-box">
+    <h2 data-lang="it">Grazie mille!</h2>
+    <h2 data-lang="en">Thank you!</h2>
+    <p data-lang="it">Il tuo feedback è stato inviato con successo.</p>
+    <p data-lang="en">Your feedback has been sent successfully.</p>
+  </div>
+</main>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
+    });
+    document.getElementById('btn-it').classList.toggle('active', lang === 'it');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+    localStorage.setItem('feedback-lang', lang);
+  }
+
+  function toggleRecommendTo(show) {
+    document.getElementById('recommend-to-box').classList.toggle('visible', show);
+  }
+
+  // Restore language preference if previously set on this device
+  const savedLang = localStorage.getItem('feedback-lang');
+  if (savedLang) setLang(savedLang);
+
+  // Submit via fetch to show inline thank-you instead of redirecting
+  const form = document.getElementById('feedback-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = 'none';
+        document.getElementById('thanks-box').classList.add('visible');
+      } else {
+        alert('Si è verificato un errore. Riprova o scrivici direttamente a postmaster@roccasanta.com / Something went wrong. Please try again or email us at postmaster@roccasanta.com');
+      }
+    }).catch(() => {
+      alert('Si è verificato un errore. Riprova o scrivici direttamente a postmaster@roccasanta.com / Something went wrong. Please try again or email us at postmaster@roccasanta.com');
+    });
+  });
+</script>
+
+</body>
+</html>
