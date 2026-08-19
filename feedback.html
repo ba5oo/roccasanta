@@ -239,7 +239,8 @@
     font-size: 1.8rem;
   }
 
-  [data-lang="en"] { display: none; }
+  html:not(.lang-en) [data-lang="en"] { display: none !important; }
+  html.lang-en [data-lang="it"] { display: none !important; }
 </style>
 </head>
 <body>
@@ -393,9 +394,7 @@
 
 <script>
   function setLang(lang) {
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      el.style.display = (el.getAttribute('data-lang') === lang) ? '' : 'none';
-    });
+    document.documentElement.classList.toggle('lang-en', lang === 'en');
     document.getElementById('btn-it').classList.toggle('active', lang === 'it');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.documentElement.lang = lang;
