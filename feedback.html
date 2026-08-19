@@ -241,6 +241,10 @@
 
   html:not(.lang-en) [data-lang="en"] { display: none !important; }
   html.lang-en [data-lang="it"] { display: none !important; }
+
+  .radio-group label span, .checkbox-group label span {
+    display: inline;
+  }
 </style>
 </head>
 <body>
@@ -324,16 +328,13 @@
       <label class="main-label" data-lang="en">5. Would you recommend Trullo Rocca Santa to others?</label>
       <div class="radio-group">
         <input type="radio" id="rec-si" name="consiglieresti" value="Si" onchange="toggleRecommendTo(true)" required>
-        <label for="rec-si" data-lang="it">Sì</label>
-        <label for="rec-si" data-lang="en">Yes</label>
+        <label for="rec-si"><span data-lang="it">Sì</span><span data-lang="en">Yes</span></label>
 
         <input type="radio" id="rec-no" name="consiglieresti" value="No" onchange="toggleRecommendTo(false)">
-        <label for="rec-no" data-lang="it">No</label>
-        <label for="rec-no" data-lang="en">No</label>
+        <label for="rec-no"><span data-lang="it">No</span><span data-lang="en">No</span></label>
 
         <input type="radio" id="rec-forse" name="consiglieresti" value="Forse" onchange="toggleRecommendTo(false)">
-        <label for="rec-forse" data-lang="it">Forse</label>
-        <label for="rec-forse" data-lang="en">Maybe</label>
+        <label for="rec-forse"><span data-lang="it">Forse</span><span data-lang="en">Maybe</span></label>
       </div>
 
       <div class="recommend-to" id="recommend-to-box">
@@ -341,20 +342,16 @@
         <span class="sub-label" data-lang="en">If yes, to whom?</span>
         <div class="checkbox-group">
           <input type="checkbox" id="to-coppie" name="a_chi" value="Coppie">
-          <label for="to-coppie" data-lang="it">Coppie</label>
-          <label for="to-coppie" data-lang="en">Couples</label>
+          <label for="to-coppie"><span data-lang="it">Coppie</span><span data-lang="en">Couples</span></label>
 
           <input type="checkbox" id="to-famiglie" name="a_chi" value="Famiglie">
-          <label for="to-famiglie" data-lang="it">Famiglie</label>
-          <label for="to-famiglie" data-lang="en">Families</label>
+          <label for="to-famiglie"><span data-lang="it">Famiglie</span><span data-lang="en">Families</span></label>
 
           <input type="checkbox" id="to-gruppi" name="a_chi" value="Gruppi di amici">
-          <label for="to-gruppi" data-lang="it">Gruppi di amici</label>
-          <label for="to-gruppi" data-lang="en">Groups of friends</label>
+          <label for="to-gruppi"><span data-lang="it">Gruppi di amici</span><span data-lang="en">Groups of friends</span></label>
 
           <input type="checkbox" id="to-solo" name="a_chi" value="Viaggiatori singoli">
-          <label for="to-solo" data-lang="it">Viaggiatori singoli</label>
-          <label for="to-solo" data-lang="en">Solo travelers</label>
+          <label for="to-solo"><span data-lang="it">Viaggiatori singoli</span><span data-lang="en">Solo travelers</span></label>
         </div>
       </div>
     </div>
