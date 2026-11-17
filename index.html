@@ -3,8 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trullo Rocca Santa — Ostuni, Puglia</title>
-  <meta name="description" content="Autentico trullo pugliese restaurato nella campagna di Ostuni. Prenota direttamente con i proprietari." />
+  <title>Trullo Rocca Santa — Trullo in affitto a Ostuni, Puglia · fino a 6 ospiti</title>
+  <meta name="description" content="Trullo di famiglia in affitto nella campagna di Ostuni: 2 camere, divano letto, 2 bagni, giardino e parcheggio privato. A 20 minuti dal mare. Prenota direttamente con i proprietari." />
+  <link rel="canonical" href="https://roccasanta.com/" />
+  <link rel="alternate" hreflang="it" href="https://roccasanta.com/" />
+  <link rel="alternate" hreflang="en" href="https://roccasanta.com/en.html" />
+  <link rel="alternate" hreflang="x-default" href="https://roccasanta.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Trullo Rocca Santa" />
+  <meta property="og:title" content="Trullo Rocca Santa — Trullo in affitto a Ostuni, Puglia · fino a 6 ospiti" />
+  <meta property="og:description" content="Trullo di famiglia in affitto nella campagna di Ostuni: 2 camere, divano letto, 2 bagni, giardino e parcheggio privato. A 20 minuti dal mare. Prenota direttamente con i proprietari." />
+  <meta property="og:url" content="https://roccasanta.com/" />
+  <meta property="og:image" content="https://roccasanta.com/foto/hero-desktop-pergola-vista.jpg" />
+  <meta property="og:locale" content="it_IT" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "@id": "https://roccasanta.com/#trullo",
+  "name": "Trullo Rocca Santa",
+  "description": "Trullo di famiglia in affitto nella campagna di Ostuni: 2 camere, divano letto, 2 bagni, giardino e parcheggio privato. A 20 minuti dal mare. Prenota direttamente con i proprietari.",
+  "url": "https://roccasanta.com/",
+  "inLanguage": "it",
+  "email": "postmaster@roccasanta.com",
+  "image": [
+    "https://roccasanta.com/foto/hero-desktop-pergola-vista.jpg",
+    "https://roccasanta.com/foto/trullo-coni-cortile-01.jpg",
+    "https://roccasanta.com/foto/pergola-divani-01.jpg",
+    "https://roccasanta.com/foto/soggiorno-panoramica-01.jpg",
+    "https://roccasanta.com/foto/camera-matrimoniale-02.jpg"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Ostuni",
+    "addressRegion": "BR",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.716,
+    "longitude": 17.502
+  },
+  "numberOfRooms": 2,
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Wi-Fi",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Parcheggio privato",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Giardino",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Patio con pergola",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Forno a legna",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Cucina esterna",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Biancheria inclusa",
+      "value": true
+    }
+  ],
+  "containsPlace": {
+    "@type": "Accommodation",
+    "name": "Trullo Rocca Santa",
+    "additionalType": "https://schema.org/House",
+    "numberOfBedrooms": 2,
+    "numberOfBathroomsTotal": 2,
+    "occupancy": {
+      "@type": "QuantitativeValue",
+      "maxValue": 6
+    },
+    "bed": [
+      {
+        "@type": "BedDetails",
+        "numberOfBeds": 1,
+        "typeOfBed": "Letto matrimoniale"
+      },
+      {
+        "@type": "BedDetails",
+        "numberOfBeds": 2,
+        "typeOfBed": "Letto singolo"
+      },
+      {
+        "@type": "BedDetails",
+        "numberOfBeds": 1,
+        "typeOfBed": "Divano letto"
+      }
+    ]
+  },
+  "sameAs": [
+    "https://www.airbnb.it/h/roccasanta",
+    "https://www.booking.com/hotel/it/trullo-rocca-santa.it.html",
+    "https://maps.google.com/?cid=14642629508983504972"
+  ]
+}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -79,6 +192,7 @@
       transition: color 0.2s;
     }
     #nav.scrolled .nav-link { color: var(--text-lt); }
+    .nav-lang { font-weight: 500; }
     .nav-link:hover { color: var(--terra-lt) !important; }
 
     .nav-cta {
@@ -765,6 +879,8 @@
       #camere, #gallery { padding: 5rem 2rem; }
       .intro-inset { display: none; }
       #nav { grid-template-columns: auto 1fr; padding: 1rem 1.5rem; }
+      #nav.scrolled { padding: 0.8rem 1.25rem; }
+      .nav-logo { justify-self: start; text-align: left; }
       .nav-left { display: none; }
       .nav-right { justify-content: flex-end; }
 
@@ -796,6 +912,10 @@
     }
 
     @media (max-width: 600px) {
+      .nav-right { gap: 1rem; }
+      .nav-right .nav-link[href^="mailto"] { display: none; }
+      .nav-logo { font-size: 0.95rem; letter-spacing: 0.02em; }
+      .nav-cta { padding: 0.45rem 0.9rem; letter-spacing: 0.14em; }
       .rooms-grid { grid-template-columns: 1fr; }
       .storia-grid { grid-template-columns: repeat(2, 1fr); }
       .lb-btn.prev { left: 0.3rem; } .lb-btn.next { right: 0.3rem; }
@@ -817,6 +937,7 @@
   </div>
   <a href="#" class="nav-logo">Trullo Rocca Santa</a>
   <div class="nav-right">
+    <a href="en.html" class="nav-link nav-lang" hreflang="en" lang="en">EN</a>
     <a href="mailto:postmaster@roccasanta.com" class="nav-link">Contatti</a>
     <a href="#booking" class="nav-cta">Prenota</a>
   </div>
@@ -1075,7 +1196,7 @@
     <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/trullo-volta-interna-01.jpg"><img src="foto/trullo-volta-interna-01-sm.jpg" srcset="foto/trullo-volta-interna-01-sm.jpg 800w, foto/trullo-volta-interna-01.jpg 1600w" sizes="400px" alt="La volta a cono" loading="lazy" /></button>
     <button class="gal-item" type="button" data-cat="interni" data-big="1" data-ar="1.333" data-full="foto/soggiorno-prospettiva-archi-01.jpg"><img src="foto/soggiorno-prospettiva-archi-01-sm.jpg" srcset="foto/soggiorno-prospettiva-archi-01-sm.jpg 800w, foto/soggiorno-prospettiva-archi-01.jpg 1600w" sizes="400px" alt="Archi in pietra" loading="lazy" /></button>
     <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/camera-matrimoniale-vista-dalla-porta-01.jpg"><img src="foto/camera-matrimoniale-vista-dalla-porta-01-sm.jpg" srcset="foto/camera-matrimoniale-vista-dalla-porta-01-sm.jpg 800w, foto/camera-matrimoniale-vista-dalla-porta-01.jpg 1600w" sizes="400px" alt="La camera matrimoniale" loading="lazy" /></button>
-    <button class="gal-item" type="button" data-cat="interni" data-ar="0.562" data-full="foto/camera-matrimoniale-vista-dalla-porta-01.jpg"><img src="foto/camera-matrimoniale-vista-dalla-porta-01-sm.jpg" srcset="foto/camera-matrimoniale-vista-dalla-porta-01-sm.jpg 800w, foto/camera-matrimoniale-vista-dalla-porta-01.jpg 1600w" sizes="400px" alt="La camera matrimoniale e la porta sul patio" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/soggiorno-verso-alcova-01.jpg"><img src="foto/soggiorno-verso-alcova-01-sm.jpg" srcset="foto/soggiorno-verso-alcova-01-sm.jpg 800w, foto/soggiorno-verso-alcova-01.jpg 1600w" sizes="400px" alt="Dal soggiorno verso l'alcova" loading="lazy" /></button>
     <button class="gal-item" type="button" data-cat="interni" data-ar="0.562" data-full="foto/dettaglio-tenda-ricamata-02.jpg"><img src="foto/dettaglio-tenda-ricamata-02-sm.jpg" srcset="foto/dettaglio-tenda-ricamata-02-sm.jpg 800w, foto/dettaglio-tenda-ricamata-02.jpg 1600w" sizes="400px" alt="Tende ricamate" loading="lazy" /></button>
     <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/camera-matrimoniale-tenda-ricamata-01.jpg"><img src="foto/camera-matrimoniale-tenda-ricamata-01-sm.jpg" srcset="foto/camera-matrimoniale-tenda-ricamata-01-sm.jpg 800w, foto/camera-matrimoniale-tenda-ricamata-01.jpg 1600w" sizes="400px" alt="La camera vista dalla porta" loading="lazy" /></button>
     <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/cucina-angolo-01.jpg"><img src="foto/cucina-angolo-01-sm.jpg" srcset="foto/cucina-angolo-01-sm.jpg 800w, foto/cucina-angolo-01.jpg 1600w" sizes="400px" alt="La cucina" loading="lazy" /></button>
