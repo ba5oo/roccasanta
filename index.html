@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trullo Rocca Santa — Ostuni, Puglia</title>
-  <meta name="description" content="Autentico trullo pugliese restaurato nella campagna di Ostuni. Prenota direttamente per il miglior prezzo." />
+  <meta name="description" content="Autentico trullo pugliese restaurato nella campagna di Ostuni. Prenota direttamente con i proprietari." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -111,9 +111,12 @@
     .hero-bg {
       position: absolute;
       inset: -6%;
-      background: url('photos/vista1.jpg') center/cover no-repeat;
+      background: url('foto/vista-campagna-dall-alto-01.jpg') center/cover no-repeat;
       animation: heroZoom 14s ease-out forwards;
       will-change: transform;
+    }
+    @media (min-width: 961px) and (orientation: landscape) {
+      .hero-bg { background-image: url('foto/hero-desktop-pergola-vista.jpg'); background-position: center 60%; }
     }
     @keyframes heroZoom {
       from { transform: scale(1.1); }
@@ -299,22 +302,6 @@
       color: var(--text);
     }
 
-    /* ─── GALLERY ─── */
-    #gallery {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 320px 240px;
-      gap: 4px;
-    }
-    .g-item { overflow: hidden; background: var(--stone); }
-    .g-item img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .g-item:hover img { transform: scale(1.05); }
-    .g-item.tall { grid-row: span 2; }
-
     /* ─── FEATURES ─── */
     #features {
       padding: 7rem 8vw;
@@ -323,9 +310,7 @@
     .features-header {
       display: grid;
       grid-template-columns: 1fr;
-      padding-bottom: 3.5rem;
-      margin-bottom: 3.5rem;
-      border-bottom: 1px solid var(--bone);
+      margin-bottom: 1rem;
     }
     .features-header h2 {
       font-family: var(--serif);
@@ -345,11 +330,7 @@
     }
     .feat-card {
       padding: 2.5rem 2.5rem 2.5rem 0;
-      border-top: 1px solid var(--bone);
-      border-right: 1px solid var(--bone);
     }
-    .feat-card:nth-child(3n) { border-right: none; }
-    .feat-card:nth-child(n+4) { /* no extra border needed */ }
     .feat-icon {
       width: 22px; height: 22px;
       color: var(--terra);
@@ -408,70 +389,152 @@
       font-style: normal;
     }
 
-    /* ─── SLIDER ─── */
-    #slider-section {
-      background: var(--white);
-      padding: 7rem 0;
+    /* ─── INTRO: foto inserita ─── */
+    .intro-photo { position: relative; min-height: 520px; overflow: visible !important; }
+    .intro-photo:hover img { transform: none; }
+    .intro-photo > img { position: absolute; inset: 0; }
+    .intro-inset {
+      position: absolute; left: -3.5rem; bottom: 3.5rem;
+      width: 34%; aspect-ratio: 3/4;
+      border: 6px solid var(--white);
+      box-shadow: 0 12px 40px rgba(16,15,13,0.18);
       overflow: hidden;
     }
-    .slider-head {
-      text-align: center;
-      padding: 0 7vw;
-      margin-bottom: 3rem;
+    .intro-inset { z-index: 2; margin: 0; }
+    .intro-inset figcaption {
+      position: absolute; left: 0.6rem; bottom: 0.5rem;
+      font-family: var(--serif); font-size: 0.9rem; color: var(--white);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     }
-    .rule {
-      width: 36px; height: 1px;
-      background: var(--terra);
-      margin: 0 auto 1.5rem;
-    }
-    .slider-head h2 {
+    .intro-inset img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .intro-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+
+    /* ─── INTESTAZIONE SEZIONI ─── */
+    .section-head { max-width: 640px; margin-bottom: 3rem; }
+    .section-head h2 {
       font-family: var(--serif);
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      font-weight: 400;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 400; line-height: 1.2;
+      margin-bottom: 1rem;
     }
-    .slider-wrap { overflow: hidden; }
-    .slider-track {
-      display: flex;
-      transition: transform 0.65s cubic-bezier(0.77,0,0.175,1);
+    .section-head p { font-size: 0.95rem; color: var(--text-lt); line-height: 1.8; }
+
+    /* ─── CAMERE ─── */
+    #camere { padding: 7rem 8vw; background: var(--bone); }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem 2rem;
     }
-    .slide {
-      min-width: 100%;
-      height: 62vh;
-      min-height: 380px;
-      flex-shrink: 0;
-      overflow: hidden;
+    .room-photo {
+      position: relative; display: block; width: 100%;
+      aspect-ratio: 4/3; overflow: hidden;
+      border: none; padding: 0; cursor: zoom-in;
+      background: var(--stone); margin-bottom: 1.2rem;
     }
-    .slide img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
+    .room-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
     }
-    .slider-foot {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-      margin-top: 2.5rem;
-      padding: 0 7vw;
+    .room-photo:hover img { transform: scale(1.05); }
+    .room-count {
+      position: absolute; right: 0.8rem; bottom: 0.8rem;
+      font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase;
+      background: rgba(16,15,13,0.6); color: var(--white);
+      padding: 0.3rem 0.6rem;
     }
-    .s-btn {
-      background: none;
-      border: 1px solid var(--stone);
-      width: 46px; height: 46px;
+    .room-tag {
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--terra); display: block; margin-bottom: 0.4rem;
+    }
+    .room h3 {
+      font-family: var(--serif); font-size: 1.3rem; font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .room p { font-size: 0.88rem; color: var(--text-lt); line-height: 1.75; }
+
+    /* ─── GALLERIA ─── */
+    #gallery { padding: 7rem 8vw; background: var(--white); }
+    .gal-filters { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .gal-filter {
+      font-family: var(--sans); font-size: 0.68rem; font-weight: 400;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      background: none; color: var(--text-lt);
+      border: 1px solid var(--stone); padding: 0.55rem 1.2rem;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .gal-filter:hover { border-color: var(--terra); color: var(--terra); }
+    .gal-filter.active { background: var(--terra); border-color: var(--terra); color: var(--white); }
+    .gal-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+    .gal-item {
+      flex: 0 0 auto; overflow: hidden; border: none; padding: 0;
+      background: var(--bone); cursor: zoom-in;
+    }
+    .gal-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .gal-item:hover img { transform: scale(1.05); }
+    .gal-item.hidden { display: none; }
+
+    /* ─── COME ERAVAMO ─── */
+    #storia { padding: 7rem 8vw; background: var(--white); border-top: 1px solid var(--bone); }
+    .storia-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+    .storia-item { aspect-ratio: 4/3; overflow: hidden; border: none; padding: 0; background: var(--stone); cursor: zoom-in; }
+    .storia-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: sepia(0.25) saturate(0.85);
+      transition: transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+    }
+    .storia-item:hover img { transform: scale(1.05); filter: none; }
+    .map-photo { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; margin-bottom: 2rem; }
+
+    /* ─── SEZIONI RICHIUDIBILI ─── */
+    .fold { position: relative; max-height: 640px; overflow: hidden; transition: max-height 0.6s ease; }
+    .fold.fold-sm { max-height: 300px; }
+    .fold::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 140px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), var(--white));
+      pointer-events: none; transition: opacity 0.3s;
+    }
+    .fold.open { max-height: none; }
+    .fold.open::after { opacity: 0; }
+    .fold-btn {
+      display: block; margin: 1.8rem auto 0;
+      font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+      background: none; color: var(--terra); border: 1px solid var(--terra);
+      padding: 0.8rem 1.8rem; cursor: pointer; transition: all 0.2s;
+    }
+    .fold-btn:hover { background: var(--terra); color: var(--white); }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(16,15,13,0.95);
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      font-size: 1.1rem;
-      color: var(--text-lt);
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: auto; }
+    .lb-figure { max-width: 90vw; max-height: 90vh; text-align: center; }
+    .lb-figure img {
+      max-width: 90vw; max-height: 82vh; object-fit: contain; display: block; margin: 0 auto;
+    }
+    .lb-figure figcaption {
+      display: flex; justify-content: space-between; gap: 2rem;
+      margin-top: 0.9rem; font-size: 0.85rem; color: rgba(255,255,255,0.75);
+    }
+    .lb-count { font-family: var(--serif); color: var(--terra-lt); letter-spacing: 0.1em; }
+    .lb-btn, .lb-close {
+      position: absolute; background: none; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.85);
+      width: 46px; height: 46px; font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
       transition: border-color 0.2s, color 0.2s;
     }
-    .s-btn:hover { border-color: var(--terra); color: var(--terra); }
-    .s-count {
-      font-family: var(--serif);
-      font-size: 0.9rem;
-      color: var(--stone);
-      letter-spacing: 0.1em;
-      min-width: 56px;
-      text-align: center;
-    }
+    .lb-btn:hover, .lb-close:hover { border-color: var(--terra-lt); color: var(--terra-lt); }
+    .lb-btn.prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
+    .lb-btn.next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
+    .lb-close { top: 1.2rem; right: 1.5rem; border: none; }
 
     /* ─── BOOKING ─── */
     #booking { display: grid; grid-template-columns: 1fr 1fr; }
@@ -694,6 +757,13 @@
     
      /* ─── RESPONSIVE ─── */
     @media (max-width: 960px) {
+      .fold { max-height: 520px; }
+      .fold.fold-sm { max-height: 260px; }
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .storia-grid { grid-template-columns: repeat(3, 1fr); }
+      #storia { padding: 5rem 2rem; }
+      #camere, #gallery { padding: 5rem 2rem; }
+      .intro-inset { display: none; }
       #nav { grid-template-columns: auto 1fr; padding: 1rem 1.5rem; }
       .nav-left { display: none; }
       .nav-right { justify-content: flex-end; }
@@ -708,12 +778,6 @@
       .info-strip { grid-template-columns: 1fr 1fr; }
       .info-item { border-bottom: 1px solid var(--stone); }
 
-      #gallery {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto;
-      }
-      .g-item { height: 200px; }
-      .g-item.tall { grid-row: span 1; height: 200px; }
 
       .features-header { grid-template-columns: 1fr; gap: 2rem; }
       .features-grid { grid-template-columns: 1fr 1fr; }
@@ -732,9 +796,10 @@
     }
 
     @media (max-width: 600px) {
+      .rooms-grid { grid-template-columns: 1fr; }
+      .storia-grid { grid-template-columns: repeat(2, 1fr); }
+      .lb-btn.prev { left: 0.3rem; } .lb-btn.next { right: 0.3rem; }
       .features-grid { grid-template-columns: 1fr; }
-      #gallery { grid-template-columns: 1fr; }
-      .g-item, .g-item.tall { height: 55vw; }
       #features { padding: 5rem 2rem; }
       #quote { padding: 6rem 2rem; }
     }
@@ -746,6 +811,7 @@
 <nav id="nav">
   <div class="nav-left">
     <a href="#trullo"  class="nav-link">Il Trullo</a>
+    <a href="#camere"  class="nav-link">Camere</a>
     <a href="#gallery" class="nav-link">Galleria</a>
     <a href="#map"     class="nav-link">Dove Siamo</a>
   </div>
@@ -778,10 +844,17 @@
     <h2>Un trullo di famiglia,<br>nella campagna di Ostuni</h2>
     <p>Rocca Santa è il trullo di famiglia, nella campagna di Ostuni. Lo abbiamo restaurato rispettando quello che era: pietra, volte a cono, materiali locali.</p>
     <p>Un posto dove stare bene, lontano dal rumore.</p>
-    <a href="#gallery" class="btn-outline-terra">Vedi le foto</a>
+    <div class="intro-links">
+      <a href="#camere" class="btn-outline-terra">Gli spazi interni</a>
+      <a href="#gallery" class="btn-outline-terra">Vedi le foto</a>
+    </div>
   </div>
   <div class="intro-photo">
-    <img src="photos/out1.jpg" alt="Esterno del Trullo Rocca Santa" loading="lazy" />
+    <img src="foto/trullo-coni-cortile-01.jpg" alt="I coni in pietra del Trullo Rocca Santa" loading="lazy" />
+    <figure class="intro-inset">
+      <img src="foto/storico-2007-trulli-facciata-intro-sm.jpg" alt="Il trullo nel 2007, prima del restauro" loading="lazy" />
+      <figcaption>2007</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -825,22 +898,75 @@
   </div>
 </div>
 
-<!-- ═══════════ GALLERY ═══════════ -->
-<section id="gallery">
-  <div class="g-item tall">
-    <img src="photos/patio.jpg" alt="Patio esterno" loading="lazy" />
+<!-- ═══════════ CAMERE / SPAZI INTERNI ═══════════ -->
+<section id="camere">
+  <div class="section-head">
+    <span class="eyebrow">Dentro il trullo</span>
+    <h2>Le camere e gli spazi</h2>
+    <p>Due camere, un soggiorno con divano letto, la cucina e due bagni. Toccate una foto per vedere le altre.</p>
   </div>
-  <div class="g-item">
-    <img src="photos/out2.jpg" alt="Esterno trullo" loading="lazy" />
-  </div>
-  <div class="g-item">
-    <img src="photos/cibo2.jpg" alt="Fichi" loading="lazy" />
-  </div>
-  <div class="g-item">
-    <img src="photos/salsa2.jpg" alt="Salsa" loading="lazy" />
-  </div>
-  <div class="g-item">
-    <img src="photos/trullo1.jpg" alt="Trullo" loading="lazy" />
+  <div class="rooms-grid">
+
+    <article class="room" data-photos="camera-matrimoniale-02|camera-matrimoniale-armadio-02|camera-matrimoniale-tenda-ricamata-01|camera-matrimoniale-porta-sul-patio-01">
+      <button class="room-photo" type="button" aria-label="Foto della camera matrimoniale">
+        <img src="foto/camera-matrimoniale-02-sm.jpg" alt="Camera matrimoniale" loading="lazy" />
+        <span class="room-count">4 foto</span>
+      </button>
+      <span class="room-tag">Camera 1 · 2 ospiti</span>
+      <h3>Camera matrimoniale</h3>
+      <p>Letto matrimoniale sotto il soffitto a volta, armadio capiente e comodini. Una stanza semplice e luminosa.</p>
+    </article>
+
+    <article class="room" data-photos="camera-singoli-bianco-01|camera-singoli-bianco-02|camera-singoli-bianco-03">
+      <button class="room-photo" type="button" aria-label="Foto della camera con due letti">
+        <img src="foto/camera-singoli-bianco-01-sm.jpg" alt="Camera con due letti singoli" loading="lazy" />
+        <span class="room-count">3 foto</span>
+      </button>
+      <span class="room-tag">Camera 2 · 2 ospiti</span>
+      <h3>Camera con due letti</h3>
+      <p>Due letti singoli nelle alcove in pietra del trullo, tra muri in pietra e piccole nicchie. Perfetta per bambini o amici.</p>
+    </article>
+
+    <article class="room" data-photos="soggiorno-panoramica-01|soggiorno-tavolo-arco-01|soggiorno-alcova-divano-letto-03">
+      <button class="room-photo" type="button" aria-label="Foto del soggiorno con divano letto">
+        <img src="foto/soggiorno-panoramica-01-sm.jpg" alt="Soggiorno con tavolo da pranzo e divano letto" loading="lazy" />
+        <span class="room-count">3 foto</span>
+      </button>
+      <span class="room-tag">Soggiorno · divano letto</span>
+      <h3>Soggiorno con divano letto</h3>
+      <p>Tavolo da pranzo e camino. Nell'alcova, un divano letto per altri due ospiti.</p>
+    </article>
+
+    <article class="room" data-photos="bagno-interno-01|bagno-interno-specchio-01">
+      <button class="room-photo" type="button" aria-label="Foto del bagno interno">
+        <img src="foto/bagno-interno-01-sm.jpg" alt="Bagno interno con doccia" loading="lazy" />
+        <span class="room-count">2 foto</span>
+      </button>
+      <span class="room-tag">Bagno 1</span>
+      <h3>Bagno interno</h3>
+      <p>Con doccia e finestra. Biancheria da bagno inclusa.</p>
+    </article>
+
+    <article class="room" data-photos="cucina-completa-01|cucina-angolo-01|cucina-frigorifero-01">
+      <button class="room-photo" type="button" aria-label="Foto della cucina">
+        <img src="foto/cucina-completa-01-sm.jpg" alt="Cucina esterna in muratura" loading="lazy" />
+        <span class="room-count">3 foto</span>
+      </button>
+      <span class="room-tag">Cucina esterna</span>
+      <h3>Cucina esterna in muratura</h3>
+      <p>Piano cottura a gas, frigorifero, microonde e macchina del caffè. Pentole e stoviglie per tutti.</p>
+    </article>
+
+    <article class="room" data-photos="bagno-esterno-01">
+      <button class="room-photo" type="button" aria-label="Foto del bagno esterno">
+        <img src="foto/bagno-esterno-01-sm.jpg" alt="Bagno esterno con doccia" loading="lazy" />
+        <span class="room-count">1 foto</span>
+      </button>
+      <span class="room-tag">Bagno 2</span>
+      <h3>Bagno esterno</h3>
+      <p>Un secondo bagno completo con doccia, separato dalla casa. Comodo quando si è in tanti.</p>
+    </article>
+
   </div>
 </section>
 
@@ -853,32 +979,32 @@
     <div class="feat-card">
       <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
       <h3>Il trullo in pietra</h3>
-      <p>Costruzione tradizionale pugliese con volte a cono originali, muri in pietra calcarea a secco e interni curati nel rispetto dei materiali locali.</p>
+      <p>Costruzione tradizionale pugliese con volte a cono, muri in pietra calcarea a secco e interni curati nel rispetto dei materiali locali.</p>
     </div>
     <div class="feat-card">
       <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 017 7c0 4-4 8-7 11-3-3-7-7-7-11a7 7 0 017-7z"/><path d="M9 10c0-1.66 1.34-3 3-3"/></svg></span>
       <h3>Giardino e patio</h3>
-      <p>Spazio esterno privato tra gli ulivi, con area pranzo all'aperto. Il posto giusto per mangiare all'ombra o guardare il tramonto sulla campagna.</p>
+      <p>Spazio esterno privato tra gli ulivi, con area pranzo all'aperto.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2v20"/><path d="M4 2v6a3 3 0 006 0V2"/><path d="M17 22V2c-2.5 1.5-4 4-4 8v3h4"/></svg></span>
       <h3>Cucina attrezzata</h3>
-      <p>Cucina completa per chi vuole cucinare — anche solo riscaldare la burrata comprata al mercato di Ostuni. Frigorifero, piano cottura, tutto il necessario.</p>
+      <p>Cucina completa con frigorifero, piano cottura e tutto il necessario per cucinare.</p>
     </div>
     <div class="feat-card">
       <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></span>
       <h3>Wi-Fi e comfort</h3>
-      <p>Connessione Wi-Fi, aria condizionata, biancheria inclusa. Non manca niente di essenziale per stare comodi.</p>
+      <p>Connessione Wi-Fi e biancheria inclusa. Non manca niente di essenziale per stare comodi.</p>
     </div>
     <div class="feat-card">
-      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+      <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17V12l2.2-5.2A2 2 0 017.1 5.5h9.8a2 2 0 011.9 1.3L21 12v5"/><path d="M3 12h18"/><path d="M3 17h18"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="16.5" cy="17.5" r="2"/></svg></span>
       <h3>Parcheggio privato</h3>
       <p>Posto auto privato all'interno della proprietà. Utile, perché per esplorare la zona una macchina è quasi indispensabile.</p>
     </div>
     <div class="feat-card">
       <span class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
       <h3>Posizione comoda</h3>
-      <p>A 10 minuti da Ostuni, 30 dall'aeroporto di Brindisi, 5 minuti dalle prime spiagge. Da qui si raggiunge facilmente tutto il meglio della Puglia.</p>
+      <p>A 10 minuti dal centro storico di Ostuni, 45 minuti dall'aeroporto di Brindisi. 20 minuti dalle prime spiagge della costa adriatica.</p>
     </div>
   </div>
 </section>
@@ -886,44 +1012,138 @@
 <!-- ═══════════ QUOTE ═══════════ -->
 <section id="quote">
   <blockquote>
-    Il trullo non è solo un'abitazione.<br>
-    È una promessa di silenzio, di pietra e di luce.
+    Pietra, ulivi e campagna.<br>
+    Un trullo di famiglia, da vivere come una casa.
   </blockquote>
   <cite>Ostuni &nbsp;·&nbsp; Valle d'Itria</cite>
 </section>
 
-<!-- ═══════════ SLIDER ═══════════ -->
-<section id="slider-section">
-  <div class="slider-head">
-    <div class="rule"></div>
-    <h2>Intorno al Trullo</h2>
+<!-- ═══════════ GALLERIA ═══════════ -->
+<section id="gallery">
+  <div class="section-head">
+    <span class="eyebrow">Galleria</span>
+    <h2>Il trullo in immagini</h2>
   </div>
-  <div class="slider-wrap">
-    <div class="slider-track" id="sliderTrack">
-      <div class="slide"><img src="photos/vista1.jpg" alt="Campagna pugliese" /></div>
-      <div class="slide"><img src="photos/vista2.jpg" alt="Vista panoramica" /></div>
-      <div class="slide"><img src="photos/patio2.jpg" alt="Patio al tramonto" /></div>
-      <div class="slide"><img src="photos/letto2.jpg" alt="Camera da letto" /></div>
-      <div class="slide"><img src="photos/out3.jpg"   alt="Esterno" /></div>
-    </div>
+  <div class="gal-filters" role="tablist">
+    <button class="gal-filter active" type="button" data-filter="tutte">Tutte</button>
+    <button class="gal-filter" type="button" data-filter="esterni">Esterni</button>
+    <button class="gal-filter" type="button" data-filter="interni">Interni</button>
+    <button class="gal-filter" type="button" data-filter="sapori">Sapori</button>
   </div>
-  <div class="slider-foot">
-    <button class="s-btn" id="prevBtn" aria-label="Precedente">&#8592;</button>
-    <span class="s-count"><span id="slideNum">01</span> / <span id="slideTotal">05</span></span>
-    <button class="s-btn" id="nextBtn" aria-label="Successivo">&#8594;</button>
+  <div class="fold" id="galFold">
+  <div class="gal-grid">
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/trullo-coni-sedie-03.jpg"><img src="foto/trullo-coni-sedie-03-sm.jpg" srcset="foto/trullo-coni-sedie-03-sm.jpg 800w, foto/trullo-coni-sedie-03.jpg 1600w" sizes="400px" alt="I coni del trullo" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/dettaglio-tenda-cesto-tavolo-01.jpg"><img src="foto/dettaglio-tenda-cesto-tavolo-01-sm.jpg" srcset="foto/dettaglio-tenda-cesto-tavolo-01-sm.jpg 800w, foto/dettaglio-tenda-cesto-tavolo-01.jpg 1600w" sizes="400px" alt="Tende di lino e tavolo sotto il portico" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/esterno-vialetto-trulli-01.jpg"><img src="foto/esterno-vialetto-trulli-01-sm.jpg" srcset="foto/esterno-vialetto-trulli-01-sm.jpg 800w, foto/esterno-vialetto-trulli-01.jpg 1600w" sizes="400px" alt="Il vialetto tra i trulli" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/pergola-divani-01.jpg"><img src="foto/pergola-divani-01-sm.jpg" srcset="foto/pergola-divani-01-sm.jpg 800w, foto/pergola-divani-01.jpg 1600w" sizes="400px" alt="Il patio sotto la pergola" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/trullo-pinnacoli-01.jpg"><img src="foto/trullo-pinnacoli-01-sm.jpg" srcset="foto/trullo-pinnacoli-01-sm.jpg 800w, foto/trullo-pinnacoli-01.jpg 1600w" sizes="400px" alt="I pinnacoli dei coni" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/portico-cortile-panoramica-01.jpg"><img src="foto/portico-cortile-panoramica-01-sm.jpg" srcset="foto/portico-cortile-panoramica-01-sm.jpg 800w, foto/portico-cortile-panoramica-01.jpg 1600w" sizes="400px" alt="Il portico e il cortile" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.778" data-full="foto/pergola-vista-panoramica-01.jpg"><img src="foto/pergola-vista-panoramica-01-sm.jpg" srcset="foto/pergola-vista-panoramica-01-sm.jpg 800w, foto/pergola-vista-panoramica-01.jpg 1600w" sizes="400px" alt="La vista dalla pergola" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/pergola-vista-campagna-01.jpg"><img src="foto/pergola-vista-campagna-01-sm.jpg" srcset="foto/pergola-vista-campagna-01-sm.jpg 800w, foto/pergola-vista-campagna-01.jpg 1600w" sizes="400px" alt="La pergola sulla campagna" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/trullo-coni-cortile-01.jpg"><img src="foto/trullo-coni-cortile-01-sm.jpg" srcset="foto/trullo-coni-cortile-01-sm.jpg 800w, foto/trullo-coni-cortile-01.jpg 1600w" sizes="400px" alt="Il cortile tra i trulli" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/pergola-tavolo-divani-vite-01.jpg"><img src="foto/pergola-tavolo-divani-vite-01-sm.jpg" srcset="foto/pergola-tavolo-divani-vite-01-sm.jpg 800w, foto/pergola-tavolo-divani-vite-01.jpg 1600w" sizes="400px" alt="La pergola con la vite" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/giardino-ulivo-secolare-01.jpg"><img src="foto/giardino-ulivo-secolare-01-sm.jpg" srcset="foto/giardino-ulivo-secolare-01-sm.jpg 800w, foto/giardino-ulivo-secolare-01.jpg 1600w" sizes="400px" alt="L'ulivo secolare" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/forno-a-legna-acceso-sera-01.jpg"><img src="foto/forno-a-legna-acceso-sera-01-sm.jpg" srcset="foto/forno-a-legna-acceso-sera-01-sm.jpg 800w, foto/forno-a-legna-acceso-sera-01.jpg 1600w" sizes="400px" alt="Il forno acceso, la sera" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/esterno-ulivi-trulli-02.jpg"><img src="foto/esterno-ulivi-trulli-02-sm.jpg" srcset="foto/esterno-ulivi-trulli-02-sm.jpg 800w, foto/esterno-ulivi-trulli-02.jpg 1600w" sizes="400px" alt="Gli ulivi davanti al trullo" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/pergola-tende-sedute-01.jpg"><img src="foto/pergola-tende-sedute-01-sm.jpg" srcset="foto/pergola-tende-sedute-01-sm.jpg 800w, foto/pergola-tende-sedute-01.jpg 1600w" sizes="400px" alt="Sedute in pietra sotto la pergola" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/pergola-sedute-sole-01.jpg"><img src="foto/pergola-sedute-sole-01-sm.jpg" srcset="foto/pergola-sedute-sole-01-sm.jpg 800w, foto/pergola-sedute-sole-01.jpg 1600w" sizes="400px" alt="Le sedute al sole" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/trullo-pinnacoli-02.jpg"><img src="foto/trullo-pinnacoli-02-sm.jpg" srcset="foto/trullo-pinnacoli-02-sm.jpg 800w, foto/trullo-pinnacoli-02.jpg 1600w" sizes="400px" alt="Pietra a secco e pinnacoli" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/portico-pergola-cortile-01.jpg"><img src="foto/portico-pergola-cortile-01-sm.jpg" srcset="foto/portico-pergola-cortile-01-sm.jpg 800w, foto/portico-pergola-cortile-01.jpg 1600w" sizes="400px" alt="Il portico" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/pergola-vista-cuscini-02.jpg"><img src="foto/pergola-vista-cuscini-02-sm.jpg" srcset="foto/pergola-vista-cuscini-02-sm.jpg 800w, foto/pergola-vista-cuscini-02.jpg 1600w" sizes="400px" alt="Un angolo all'ombra" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/trullo-tondo-prato-01.jpg"><img src="foto/trullo-tondo-prato-01-sm.jpg" srcset="foto/trullo-tondo-prato-01-sm.jpg 800w, foto/trullo-tondo-prato-01.jpg 1600w" sizes="400px" alt="Il trullo tra il prato e gli ulivi" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/giardino-ulivo-lavanda-01.jpg"><img src="foto/giardino-ulivo-lavanda-01-sm.jpg" srcset="foto/giardino-ulivo-lavanda-01-sm.jpg 800w, foto/giardino-ulivo-lavanda-01.jpg 1600w" sizes="400px" alt="Ulivo e lavanda" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/portico-vista-ulivi-01.jpg"><img src="foto/portico-vista-ulivi-01-sm.jpg" srcset="foto/portico-vista-ulivi-01-sm.jpg 800w, foto/portico-vista-ulivi-01.jpg 1600w" sizes="400px" alt="Dal portico verso gli ulivi" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/pergola-sedute-02.jpg"><img src="foto/pergola-sedute-02-sm.jpg" srcset="foto/pergola-sedute-02-sm.jpg 800w, foto/pergola-sedute-02.jpg 1600w" sizes="400px" alt="Le sedute della pergola" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/esterno-ulivi-trulli-03.jpg"><img src="foto/esterno-ulivi-trulli-03-sm.jpg" srcset="foto/esterno-ulivi-trulli-03-sm.jpg 800w, foto/esterno-ulivi-trulli-03.jpg 1600w" sizes="400px" alt="Ulivi e trulli" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/esterno-vialetto-trulli-02.jpg"><img src="foto/esterno-vialetto-trulli-02-sm.jpg" srcset="foto/esterno-vialetto-trulli-02-sm.jpg 800w, foto/esterno-vialetto-trulli-02.jpg 1600w" sizes="400px" alt="Verso i trulli" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/patio-lavabo-pietra-vite-01.jpg"><img src="foto/patio-lavabo-pietra-vite-01-sm.jpg" srcset="foto/patio-lavabo-pietra-vite-01-sm.jpg 800w, foto/patio-lavabo-pietra-vite-01.jpg 1600w" sizes="400px" alt="Il lavabo in pietra sotto la vite" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/portico-pergola-cortile-02.jpg"><img src="foto/portico-pergola-cortile-02-sm.jpg" srcset="foto/portico-pergola-cortile-02-sm.jpg 800w, foto/portico-pergola-cortile-02.jpg 1600w" sizes="400px" alt="Il cortile in pietra" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/portico-ingresso-01.jpg"><img src="foto/portico-ingresso-01-sm.jpg" srcset="foto/portico-ingresso-01-sm.jpg 800w, foto/portico-ingresso-01.jpg 1600w" sizes="400px" alt="L'ingresso" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/esterno-muro-trullo-giardino-01.jpg"><img src="foto/esterno-muro-trullo-giardino-01-sm.jpg" srcset="foto/esterno-muro-trullo-giardino-01-sm.jpg 800w, foto/esterno-muro-trullo-giardino-01.jpg 1600w" sizes="400px" alt="Muri in pietra e giardino" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/dettaglio-fiori-vista-campagna-01.jpg"><img src="foto/dettaglio-fiori-vista-campagna-01-sm.jpg" srcset="foto/dettaglio-fiori-vista-campagna-01-sm.jpg 800w, foto/dettaglio-fiori-vista-campagna-01.jpg 1600w" sizes="400px" alt="Fiori sul muretto" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.752" data-full="foto/pergola-pomodori-al-sole-01.jpg"><img src="foto/pergola-pomodori-al-sole-01-sm.jpg" srcset="foto/pergola-pomodori-al-sole-01-sm.jpg 800w, foto/pergola-pomodori-al-sole-01.jpg 1600w" sizes="400px" alt="Pomodori al sole sotto la pergola" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.778" data-full="foto/giardino-alberi-da-frutto-01.jpg"><img src="foto/giardino-alberi-da-frutto-01-sm.jpg" srcset="foto/giardino-alberi-da-frutto-01-sm.jpg 800w, foto/giardino-alberi-da-frutto-01.jpg 1600w" sizes="400px" alt="Gli alberi da frutto" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.562" data-full="foto/esterno-vialetto-trulli-03.jpg"><img src="foto/esterno-vialetto-trulli-03-sm.jpg" srcset="foto/esterno-vialetto-trulli-03-sm.jpg 800w, foto/esterno-vialetto-trulli-03.jpg 1600w" sizes="400px" alt="Il vialetto" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.778" data-full="foto/vialetto-vista-panoramica-01.jpg"><img src="foto/vialetto-vista-panoramica-01-sm.jpg" srcset="foto/vialetto-vista-panoramica-01-sm.jpg 800w, foto/vialetto-vista-panoramica-01.jpg 1600w" sizes="400px" alt="Il vialetto e la campagna" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/vista-campagna-ulivi-01.jpg"><img src="foto/vista-campagna-ulivi-01-sm.jpg" srcset="foto/vista-campagna-ulivi-01-sm.jpg 800w, foto/vista-campagna-ulivi-01.jpg 1600w" sizes="400px" alt="La campagna di Ostuni" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/vista-campagna-cane-01.jpg"><img src="foto/vista-campagna-cane-01-sm.jpg" srcset="foto/vista-campagna-cane-01-sm.jpg 800w, foto/vista-campagna-cane-01.jpg 1600w" sizes="400px" alt="Il muretto a secco e la campagna" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/vista-trulli-dal-basso-01.jpg"><img src="foto/vista-trulli-dal-basso-01-sm.jpg" srcset="foto/vista-trulli-dal-basso-01-sm.jpg 800w, foto/vista-trulli-dal-basso-01.jpg 1600w" sizes="400px" alt="Il trullo visto dal campo" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-big="1" data-ar="1.333" data-full="foto/vista-trulli-dal-basso-cane-01.jpg"><img src="foto/vista-trulli-dal-basso-cane-01-sm.jpg" srcset="foto/vista-trulli-dal-basso-cane-01-sm.jpg 800w, foto/vista-trulli-dal-basso-cane-01.jpg 1600w" sizes="400px" alt="Il trullo tra gli ulivi" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="esterni" data-ar="0.750" data-full="foto/dettaglio-costumi-stesi-01.jpg"><img src="foto/dettaglio-costumi-stesi-01-sm.jpg" srcset="foto/dettaglio-costumi-stesi-01-sm.jpg 800w, foto/dettaglio-costumi-stesi-01.jpg 1600w" sizes="400px" alt="Estate" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-big="1" data-ar="0.750" data-full="foto/camera-matrimoniale-02.jpg"><img src="foto/camera-matrimoniale-02-sm.jpg" srcset="foto/camera-matrimoniale-02-sm.jpg 800w, foto/camera-matrimoniale-02.jpg 1600w" sizes="400px" alt="La camera matrimoniale" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-big="1" data-ar="1.333" data-full="foto/soggiorno-panoramica-tenda-01.jpg"><img src="foto/soggiorno-panoramica-tenda-01-sm.jpg" srcset="foto/soggiorno-panoramica-tenda-01-sm.jpg 800w, foto/soggiorno-panoramica-tenda-01.jpg 1600w" sizes="400px" alt="Il soggiorno" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/trullo-volta-interna-01.jpg"><img src="foto/trullo-volta-interna-01-sm.jpg" srcset="foto/trullo-volta-interna-01-sm.jpg 800w, foto/trullo-volta-interna-01.jpg 1600w" sizes="400px" alt="La volta a cono" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-big="1" data-ar="1.333" data-full="foto/soggiorno-prospettiva-archi-01.jpg"><img src="foto/soggiorno-prospettiva-archi-01-sm.jpg" srcset="foto/soggiorno-prospettiva-archi-01-sm.jpg 800w, foto/soggiorno-prospettiva-archi-01.jpg 1600w" sizes="400px" alt="Archi in pietra" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/camera-matrimoniale-vista-dalla-porta-01.jpg"><img src="foto/camera-matrimoniale-vista-dalla-porta-01-sm.jpg" srcset="foto/camera-matrimoniale-vista-dalla-porta-01-sm.jpg 800w, foto/camera-matrimoniale-vista-dalla-porta-01.jpg 1600w" sizes="400px" alt="La camera matrimoniale" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-ar="0.562" data-full="foto/camera-matrimoniale-porta-sul-patio-01.jpg"><img src="foto/camera-matrimoniale-porta-sul-patio-01-sm.jpg" srcset="foto/camera-matrimoniale-porta-sul-patio-01-sm.jpg 800w, foto/camera-matrimoniale-porta-sul-patio-01.jpg 1600w" sizes="400px" alt="La camera matrimoniale e la porta sul patio" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-ar="0.562" data-full="foto/dettaglio-tenda-ricamata-02.jpg"><img src="foto/dettaglio-tenda-ricamata-02-sm.jpg" srcset="foto/dettaglio-tenda-ricamata-02-sm.jpg 800w, foto/dettaglio-tenda-ricamata-02.jpg 1600w" sizes="400px" alt="Tende ricamate" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/camera-matrimoniale-tenda-ricamata-01.jpg"><img src="foto/camera-matrimoniale-tenda-ricamata-01-sm.jpg" srcset="foto/camera-matrimoniale-tenda-ricamata-01-sm.jpg 800w, foto/camera-matrimoniale-tenda-ricamata-01.jpg 1600w" sizes="400px" alt="La camera vista dalla porta" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="interni" data-ar="0.750" data-full="foto/cucina-angolo-01.jpg"><img src="foto/cucina-angolo-01-sm.jpg" srcset="foto/cucina-angolo-01-sm.jpg 800w, foto/cucina-angolo-01.jpg 1600w" sizes="400px" alt="La cucina" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-focaccia-infornata-01.jpg"><img src="foto/sapori-focaccia-infornata-01-sm.jpg" srcset="foto/sapori-focaccia-infornata-01-sm.jpg 800w, foto/sapori-focaccia-infornata-01.jpg 1600w" sizes="400px" alt="Focaccia nel forno a legna" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-focaccia-01.jpg"><img src="foto/sapori-focaccia-01-sm.jpg" srcset="foto/sapori-focaccia-01-sm.jpg 800w, foto/sapori-focaccia-01.jpg 1600w" sizes="400px" alt="Focaccia ai pomodorini" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-frise-01.jpg"><img src="foto/sapori-frise-01-sm.jpg" srcset="foto/sapori-frise-01-sm.jpg 800w, foto/sapori-frise-01.jpg 1600w" sizes="400px" alt="Frise con pomodoro" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-fichi-sull-albero-01.jpg"><img src="foto/sapori-fichi-sull-albero-01-sm.jpg" srcset="foto/sapori-fichi-sull-albero-01-sm.jpg 800w, foto/sapori-fichi-sull-albero-01.jpg 1600w" sizes="400px" alt="Fichi dall'albero" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-fichi-nel-piatto-01.jpg"><img src="foto/sapori-fichi-nel-piatto-01-sm.jpg" srcset="foto/sapori-fichi-nel-piatto-01-sm.jpg 800w, foto/sapori-fichi-nel-piatto-01.jpg 1600w" sizes="400px" alt="Fichi nel piatto" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.752" data-full="foto/sapori-fichi-tavola-01.jpg"><img src="foto/sapori-fichi-tavola-01-sm.jpg" srcset="foto/sapori-fichi-tavola-01-sm.jpg 800w, foto/sapori-fichi-tavola-01.jpg 1600w" sizes="400px" alt="Fichi in tavola" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-fichi-dindia-secchio-01.jpg"><img src="foto/sapori-fichi-dindia-secchio-01-sm.jpg" srcset="foto/sapori-fichi-dindia-secchio-01-sm.jpg 800w, foto/sapori-fichi-dindia-secchio-01.jpg 1600w" sizes="400px" alt="Fichi d'india appena raccolti" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.562" data-full="foto/sapori-fichi-dindia-secchio-02.jpg"><img src="foto/sapori-fichi-dindia-secchio-02-sm.jpg" srcset="foto/sapori-fichi-dindia-secchio-02-sm.jpg 800w, foto/sapori-fichi-dindia-secchio-02.jpg 1600w" sizes="400px" alt="Fichi d'india" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.752" data-full="foto/sapori-pomodori-per-salsa-01.jpg"><img src="foto/sapori-pomodori-per-salsa-01-sm.jpg" srcset="foto/sapori-pomodori-per-salsa-01-sm.jpg 800w, foto/sapori-pomodori-per-salsa-01.jpg 1600w" sizes="400px" alt="Pomodori al sole per la salsa" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-moka-sul-fornello-01.jpg"><img src="foto/sapori-moka-sul-fornello-01-sm.jpg" srcset="foto/sapori-moka-sul-fornello-01-sm.jpg 800w, foto/sapori-moka-sul-fornello-01.jpg 1600w" sizes="400px" alt="La moka sul fuoco" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-moka-sul-tavolo-01.jpg"><img src="foto/sapori-moka-sul-tavolo-01-sm.jpg" srcset="foto/sapori-moka-sul-tavolo-01-sm.jpg 800w, foto/sapori-moka-sul-tavolo-01.jpg 1600w" sizes="400px" alt="Il caffè in tavola" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-caffe-versato-01.jpg"><img src="foto/sapori-caffe-versato-01-sm.jpg" srcset="foto/sapori-caffe-versato-01-sm.jpg 800w, foto/sapori-caffe-versato-01.jpg 1600w" sizes="400px" alt="Il caffè della mattina" loading="lazy" /></button>
+    <button class="gal-item" type="button" data-cat="sapori" data-ar="0.750" data-full="foto/sapori-pere-lavanda-01.jpg"><img src="foto/sapori-pere-lavanda-01-sm.jpg" srcset="foto/sapori-pere-lavanda-01-sm.jpg 800w, foto/sapori-pere-lavanda-01.jpg 1600w" sizes="400px" alt="Pere e lavanda" loading="lazy" /></button>
   </div>
+  </div>
+  <button class="fold-btn" type="button" data-target="galFold" data-open="Mostra meno" data-closed="Mostra tutte le foto">Mostra tutte le foto</button>
 </section>
+
+<!-- ═══════════ COME ERAVAMO ═══════════ -->
+<section id="storia">
+  <div class="section-head">
+    <span class="eyebrow">Come eravamo</span>
+    <h2>Rocca Santa prima del restauro</h2>
+    <p>Così erano i trulli nel 2007, prima dei lavori: calce bianca, muri a secco, la famiglia in giardino.</p>
+  </div>
+  <div class="fold fold-sm" id="storiaFold">
+  <div class="storia-grid">
+    <button class="storia-item" type="button" data-full="foto/storico-2007-trulli-facciata-01.jpg"><img src="foto/storico-2007-trulli-facciata-01-sm.jpg" alt="I trulli prima del restauro" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-cono-facciata-01.jpg"><img src="foto/storico-2007-cono-facciata-01-sm.jpg" alt="Il cono principale" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-ingresso-01.jpg"><img src="foto/storico-2007-ingresso-01-sm.jpg" alt="L'ingresso" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-trulli-scala-01.jpg"><img src="foto/storico-2007-trulli-scala-01-sm.jpg" alt="La scala sul trullo" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-bambini-sul-tetto-01.jpg"><img src="foto/storico-2007-bambini-sul-tetto-01-sm.jpg" alt="Bambini sul tetto" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-bambino-davanti-trulli-01.jpg"><img src="foto/storico-2007-bambino-davanti-trulli-01-sm.jpg" alt="Davanti ai trulli" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-trulli-con-persone-01.jpg"><img src="foto/storico-2007-trulli-con-persone-01-sm.jpg" alt="In famiglia, davanti al trullo" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-persone-lavori-01.jpg"><img src="foto/storico-2007-persone-lavori-01-sm.jpg" alt="I lavori" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-cantiere-02.jpg"><img src="foto/storico-2007-cantiere-02-sm.jpg" alt="Il cantiere" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-interno-arco-cantiere-01.jpg"><img src="foto/storico-2007-interno-arco-cantiere-01-sm.jpg" alt="L'interno durante i lavori" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-muro-a-secco-01.jpg"><img src="foto/storico-2007-muro-a-secco-01-sm.jpg" alt="Muri a secco" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-vialetto-01.jpg"><img src="foto/storico-2007-vialetto-01-sm.jpg" alt="Il vialetto" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-giardino-01.jpg"><img src="foto/storico-2007-giardino-01-sm.jpg" alt="Il giardino" loading="lazy" /></button>
+    <button class="storia-item" type="button" data-full="foto/storico-2007-giardino-pini-01.jpg"><img src="foto/storico-2007-giardino-pini-01-sm.jpg" alt="Pini e macchia" loading="lazy" /></button>
+  </div>
+  </div>
+  <button class="fold-btn" type="button" data-target="storiaFold" data-open="Mostra meno" data-closed="Mostra tutte le foto">Mostra tutte le foto</button>
+</section>
+
+<!-- ═══════════ LIGHTBOX ═══════════ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" type="button" aria-label="Chiudi">&#10005;</button>
+  <button class="lb-btn prev" type="button" aria-label="Precedente">&#8592;</button>
+  <figure class="lb-figure">
+    <img id="lbImg" src="" alt="" />
+    <figcaption><span id="lbCap"></span><span class="lb-count" id="lbCount"></span></figcaption>
+  </figure>
+  <button class="lb-btn next" type="button" aria-label="Successivo">&#8594;</button>
+</div>
 
 <!-- ═══════════ BOOKING ═══════════ -->
 <section id="booking">
   <div class="booking-left">
     <span class="eyebrow">Prenota</span>
     <h2>Prenota direttamente con noi</h2>
-    <p>Scriveteci per conoscere disponibilità e tariffe. Prenotare direttamente significa il miglior prezzo e un contatto diretto con i proprietari.</p>
+    <p>Scriveteci per conoscere disponibilità e tariffe.</p>
     <div class="booking-perks">
-      <span class="booking-perk">Miglior prezzo garantito</span>
       <span class="booking-perk">Risposta entro 24 ore</span>
-      <span class="booking-perk">Nessuna commissione di piattaforma</span>
     </div>
     <div class="also-on">
       <span class="also-label">Disponibile anche su</span>
@@ -983,6 +1203,7 @@
 <!-- ═══════════ MAP ═══════════ -->
 <section id="map">
   <div class="map-info">
+    <img class="map-photo" src="foto/esterno-strada-sterrata-01-sm.jpg" alt="La strada di campagna verso il trullo" loading="lazy" />
     <span class="eyebrow">Dove Siamo</span>
     <h3>Nelle campagne<br>di Ostuni</h3>
     <p>A 10 minuti dal centro storico di Ostuni, 45 minuti dall'aeroporto di Brindisi.</p>
@@ -1009,7 +1230,9 @@
     <div class="footer-col">
       <span class="footer-col-title">Esplora</span>
       <a href="#trullo">Il Trullo</a>
+      <a href="#camere">Camere</a>
       <a href="#gallery">Galleria</a>
+      <a href="#storia">Come eravamo</a>
       <a href="#features">Dotazioni</a>
       <a href="#map">Dove Siamo</a>
       <a href="#booking">Prenota</a>
@@ -1034,29 +1257,121 @@
     nav.classList.toggle('scrolled', window.scrollY > 60);
   }, { passive: true });
 
-  // ── SLIDER ──
-  const track      = document.getElementById('sliderTrack');
-  const slideNumEl = document.getElementById('slideNum');
-  const slides     = track.querySelectorAll('.slide');
-  let current = 0;
-  const total = slides.length;
-  document.getElementById('slideTotal').textContent = String(total).padStart(2,'0');
+  // ── LIGHTBOX (camere + galleria) ──
+  const lb      = document.getElementById('lightbox');
+  const lbImg   = document.getElementById('lbImg');
+  const lbCap   = document.getElementById('lbCap');
+  const lbCount = document.getElementById('lbCount');
+  let lbList = [], lbIdx = 0;
 
-  function goTo(n) {
-    current = (n + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    slideNumEl.textContent = String(current + 1).padStart(2,'0');
+  function lbShow(i) {
+    lbIdx = (i + lbList.length) % lbList.length;
+    lbImg.src = lbList[lbIdx].src;
+    lbImg.alt = lbList[lbIdx].cap;
+    lbCap.textContent = lbList[lbIdx].cap;
+    lbCount.textContent = String(lbIdx + 1).padStart(2,'0') + ' / ' + String(lbList.length).padStart(2,'0');
+    const multi = lbList.length > 1;
+    lb.querySelector('.prev').style.display = multi ? '' : 'none';
+    lb.querySelector('.next').style.display = multi ? '' : 'none';
   }
-  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
-  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
-
-  // ── Touch swipe ──
-  let touchStartX = 0;
-  track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+  function lbOpen(list, i) {
+    lbList = list; lbShow(i);
+    lb.classList.add('open'); lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function lbClose() {
+    lb.classList.remove('open'); lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  lb.querySelector('.prev').addEventListener('click', e => { e.stopPropagation(); lbShow(lbIdx - 1); });
+  lb.querySelector('.next').addEventListener('click', e => { e.stopPropagation(); lbShow(lbIdx + 1); });
+  lb.querySelector('.lb-close').addEventListener('click', lbClose);
+  lb.addEventListener('click', e => { if (e.target === lb) lbClose(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+    if (e.key === 'ArrowLeft')  lbShow(lbIdx - 1);
   });
+  let lbX = 0;
+  lb.addEventListener('touchstart', e => { lbX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - lbX;
+    if (Math.abs(dx) > 50) lbShow(dx < 0 ? lbIdx + 1 : lbIdx - 1);
+  });
+
+  // Camere: ogni scheda apre le sue foto
+  document.querySelectorAll('.room').forEach(room => {
+    const title = room.querySelector('h3').textContent;
+    const list = room.dataset.photos.split('|').map(n => ({ src: 'foto/' + n + '.jpg', cap: title }));
+    room.querySelector('.room-photo').addEventListener('click', () => lbOpen(list, 0));
+  });
+
+  // Galleria: mosaico + filtri
+  const galItems = [...document.querySelectorAll('.gal-item')];
+  const galGrid = document.querySelector('.gal-grid');
+  const mqNarrow = window.matchMedia('(max-width: 960px)');
+  // Righe giustificate: ogni foto nel suo formato reale (nessun ritaglio).
+  // Le righe con una foto orizzontale (o in evidenza) sono più alte.
+  function mosaic() {
+    const W = Math.floor(galGrid.getBoundingClientRect().width) - 1, gap = 6;
+    const base = mqNarrow.matches ? 180 : 340, tall = mqNarrow.matches ? 240 : 480;
+    const vis = galItems.filter(x => !x.classList.contains('hidden'));
+    let row = [];
+    const flush = (h, last) => {
+      let used = 0;
+      row.forEach((it, i) => {
+        let w = Math.floor(+it.dataset.ar * h);
+        if (!last && i === row.length - 1) w = W - used - gap * (row.length - 1);
+        used += w;
+        it.style.width = w + 'px'; it.style.height = Math.round(h) + 'px';
+        it.querySelector('img').sizes = w + 'px';
+      });
+      row = [];
+    };
+    for (const it of vis) {
+      row.push(it);
+      const target = row.some(x => x.dataset.big) ? tall : base;
+      const sum = row.reduce((a, x) => a + +x.dataset.ar, 0);
+      const h = (W - gap * (row.length - 1)) / sum;
+      if (h <= target) flush(h, false);
+    }
+    if (row.length) flush(row.some(x => x.dataset.big) ? tall : base, true);
+  }
+  mosaic();
+  let rz; window.addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(mosaic, 120); });
+  document.querySelectorAll('.gal-filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.gal-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      galItems.forEach(it => it.classList.toggle('hidden', f !== 'tutte' && it.dataset.cat !== f));
+      mosaic();
+    });
+  });
+  galItems.forEach(it => it.addEventListener('click', () => {
+    const visible = galItems.filter(x => !x.classList.contains('hidden'));
+    lbOpen(visible.map(x => ({ src: x.dataset.full, cap: x.querySelector('img').alt })), visible.indexOf(it));
+  }));
+  // Galleria e Come eravamo: apri / chiudi
+  document.querySelectorAll('.fold-btn').forEach(btn => {
+    const box = document.getElementById(btn.dataset.target);
+    btn.addEventListener('click', () => {
+      const open = box.classList.toggle('open');
+      btn.textContent = open ? btn.dataset.open : btn.dataset.closed;
+      if (!open) box.closest('section').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+  // apertura automatica se si sceglie un filtro
+  document.querySelectorAll('.gal-filter').forEach(b => b.addEventListener('click', () => {
+    const box = document.getElementById('galFold'), btn = document.querySelector('[data-target="galFold"]');
+    box.classList.add('open'); btn.textContent = btn.dataset.open;
+  }));
+
+  // Come eravamo
+  const stItems = [...document.querySelectorAll('.storia-item')];
+  const stList = stItems.map(x => ({ src: x.dataset.full, cap: x.querySelector('img').alt }));
+  stItems.forEach((it, i) => it.addEventListener('click', () => lbOpen(stList, i)));
 </script>
 
 </body>
